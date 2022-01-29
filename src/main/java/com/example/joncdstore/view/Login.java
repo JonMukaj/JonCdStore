@@ -117,7 +117,7 @@ public class Login {
     }
 
     public Scene createLoginScene() {
-        return new Scene(anchorPane,877,650);
+        return new Scene(anchorPane,877,660);
     }
 
 }
