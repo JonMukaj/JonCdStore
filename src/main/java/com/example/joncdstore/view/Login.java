@@ -1,6 +1,7 @@
 package com.example.joncdstore.view;
 
-import com.example.joncdstore.controller.Authenticator;
+//import com.example.joncdstore.controller.Authenticator;
+import com.example.joncdstore.controller.UserManager;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -96,7 +97,7 @@ public class Login {
 
         loginButton.setLayoutX(412.0);
         loginButton.setLayoutY(551.0);
-        loginButton.setOnAction(Authenticator::authenticate);
+        //loginButton.setOnAction(UserManager::authenticate);
         loginButton.setPrefHeight(25.0);
         loginButton.setPrefWidth(96.0);
         loginButton.getStyleClass().add("login");

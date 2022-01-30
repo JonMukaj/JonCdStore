@@ -25,10 +25,8 @@ public class CdManager implements Serializable {
             outObject.close();
 
         } catch (IOException e) {
-            System.out.println("Add CD unsuccessful!\n" + e);
+            System.out.println("Add CDs unsuccessful!\n" + e);
         }
-
-
     }
 
     public void readCD() {
@@ -51,14 +49,14 @@ public class CdManager implements Serializable {
         } catch (ClassNotFoundException i) {
             System.out.println("CDs cannot be found!\n" + i);
         } catch (IOException e) {
-            System.out.println("Reading supply unsuccessful!\n" + e);
+            System.out.println("Reading CDs unsuccessful!\n" + e);
         }
     }
 
 
     public void checkQuantity() {
 
-        int minQuantity = 5;
+        final int minQuantity = 5;
         readCD();
 
         Set<String> genreSet = createGenreSet(cdList);

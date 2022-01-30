@@ -3,22 +3,24 @@ package com.example.joncdstore.model;
 import java.io.*;
 
 public class CD implements Serializable {
-    private static final long serialVersionUID = -5083759422249745403L;
 
     private String titleOfCd;
     private String genre;
     private String author;
     private double purchasedPrice;
-    private int quantityOfCD;
+    private double sellingPrice;
+    private static int quantityOfCD;
 
-    public CD(String titleOfCd, String genre, String author,double priceOfCD,int quantityOfCD) {
+    public CD(String titleOfCd, String genre, String author,double purchasedPrice,double sellingPrice,int quantityOfCD) {
         this.titleOfCd = titleOfCd;
         this.genre = genre;
         this.author = author;
-        this.purchasedPrice = priceOfCD;
-        this.quantityOfCD = quantityOfCD;
+        this.purchasedPrice = purchasedPrice;
+        this.sellingPrice = sellingPrice;
+        this.quantityOfCD += quantityOfCD;
     }
 
+    //getters
     public String getTitleOfCd() {
         return titleOfCd;
     }
@@ -35,8 +37,18 @@ public class CD implements Serializable {
         return purchasedPrice;
     }
 
+    public double getSellingPrice() {
+        return sellingPrice;
+    }
+
     public int getQuantityOfCD() {
         return quantityOfCD;
+    }
+
+    //setters
+
+    public void setSellingPrice(double sellingPrice) {
+        this.sellingPrice = sellingPrice;
     }
 
     @Override
@@ -46,7 +58,7 @@ public class CD implements Serializable {
                 ", genre='" + genre + '\'' +
                 ", author='" + author + '\'' +
                 ", purchasedPrice=" + purchasedPrice +
-                ", quantityOfCD=" + quantityOfCD +
+                ", sellingPrice=" + sellingPrice +
                 '}';
     }
 }
