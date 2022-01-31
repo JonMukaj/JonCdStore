@@ -1,4 +1,4 @@
-package com.example.joncdstore.controller;
+package com.example.joncdstore.model;
 
 import com.example.joncdstore.model.CD;
 import com.example.joncdstore.model.User;
@@ -7,9 +7,12 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class UserManager implements Serializable {
+    private static final long serialVersionUID = 5529685098267757690L;
     private ArrayList<User> userList;
 
-    public UserManager () {}
+    public UserManager () {
+        readUser();
+    }
 
     public void addUser(ArrayList<User> u) {
         try {
@@ -52,4 +55,12 @@ public class UserManager implements Serializable {
         }
     }
 
+    public User checkUser(String username,String password) {
+        for (User u : userList) {
+            if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
+                return u;
+            }
+        }
+            return null;
+    }
 }

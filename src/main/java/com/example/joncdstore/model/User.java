@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.UUID;
 
 public class User implements Serializable {
+    private static final long serialVersionUID = -9219894574363813548L;
+
     private final String ID;
     private String username;
     private String password;
@@ -17,7 +19,12 @@ public class User implements Serializable {
     private double salary;
     private Date employmentDate;
 
-
+    public User(String username,String password, int privilege) {
+        this.ID = "2002";
+        this.username = username;
+        this.password = password;
+        this.privilege = privilege;
+    }
 
     //user constructor
     public User(String username,String password, int privilege,String name, String surname,String birthday,String phone,String email,double salary) {

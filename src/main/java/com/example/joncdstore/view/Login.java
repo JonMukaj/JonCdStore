@@ -1,7 +1,7 @@
 package com.example.joncdstore.view;
 
-//import com.example.joncdstore.controller.Authenticator;
-import com.example.joncdstore.controller.UserManager;
+import com.example.joncdstore.controller.loginController;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,115 +10,170 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 
 public class Login {
 
     private final AnchorPane anchorPane;
     private final GridPane gridPane;
+    private final ColumnConstraints columnConstraints0;
     private final ColumnConstraints columnConstraints1;
-    private final ColumnConstraints columnConstraints2;
+    private final RowConstraints rowConstraints0;
     private final RowConstraints rowConstraints1;
-    private final RowConstraints rowConstraints2;
-    private final Text title;
-    private final Label usernameLabel;
-    private final Label passwordLabel;
+    private final Text Title;
+    private final Label UsernameLabel;
+    private final Label PasswordLabel;
     private final PasswordField passwordField;
     private final TextField usernameField;
-    private final Button loginButton;
+    private final Button buttonLogin;
+    private final Button buttonCancel;
+    private final Text errorText;
+    private final Stage stage;
 
-    public Login() {
+    public Login(Stage stage) {
+
+        this.stage = stage;
 
         anchorPane = new AnchorPane();
         gridPane = new GridPane();
+        columnConstraints0 = new ColumnConstraints();
         columnConstraints1 = new ColumnConstraints();
-        columnConstraints2 = new ColumnConstraints();
+        rowConstraints0 = new RowConstraints();
         rowConstraints1 = new RowConstraints();
-        rowConstraints2 = new RowConstraints();
-        title = new Text();
-        usernameLabel = new Label();
-        usernameField = new TextField();
-        passwordLabel = new Label();
+        Title = new Text();
+        UsernameLabel = new Label();
+        PasswordLabel = new Label();
         passwordField = new PasswordField();
-        loginButton = new Button();
+        usernameField = new TextField();
+        buttonLogin = new Button();
+        buttonCancel = new Button();
+        errorText = new Text("Wrong Username or Password!");
 
-        anchorPane.setPrefHeight(657.0);
-        anchorPane.setPrefWidth(877.0);
-        anchorPane.getStylesheets().add(this.getClass().getResource("/FXstyle.css").toExternalForm());
         anchorPane.getStyleClass().add("main");
+        anchorPane.getStylesheets().add(this.getClass().getResource("/FXstyle.css").toExternalForm());
 
         gridPane.setAlignment(Pos.CENTER);
-        gridPane.setLayoutX(234.0);
-        gridPane.setLayoutY(31.0);
-        gridPane.setPrefHeight(509.0);
-        gridPane.setPrefWidth(428.0);
+        gridPane.setLayoutX(84.0);
+        gridPane.setLayoutY(122.0);
+        gridPane.setPrefHeight(189.0);
+        gridPane.setPrefWidth(488.0);
 
-        columnConstraints1.setMaxWidth(400.0);
-        columnConstraints1.setMinWidth(10.0);
-        columnConstraints1.setPrefWidth(180.0);
-        columnConstraints2.setPrefWidth(252.0);
-        rowConstraints1.setPrefHeight(410.0);
-        rowConstraints2.setPrefHeight(56.0);
+        Title.setId("color-text");
 
-        title.setId("rainbow-text");
-        title.setStyle("-fx-font-family: 'Brush Script MT'; -fx-font-size: 70;");
-        title.setText("C D W O R L D");
-        title.setTextAlignment(TextAlignment.CENTER);
-        title.setWrappingWidth(450.0);
+        Title.setStyle("-fx-font-family: 'Brush Script MT'; -fx-font-size: 40;");
+        Title.setText("C D - W O R L D");
+        Title.setTextAlignment(TextAlignment.CENTER);
+        Title.setWrappingWidth(487.0);
+        Title.setFont(new Font(48.0));
 
-        GridPane.setRowIndex(usernameLabel, 1);
-        usernameLabel.setAlignment(Pos.CENTER_RIGHT);
-        usernameLabel.setPrefHeight(30.0);
-        usernameLabel.setPrefWidth(168.0);
-        usernameLabel.setStyle("-fx-font-size: 20; -fx-font-weight: Bold;");
-        usernameLabel.setText("Username");
-        usernameLabel.setTextFill(Color.BLACK);
+        GridPane.setRowIndex(UsernameLabel, 1);
+        UsernameLabel.setAlignment(Pos.TOP_RIGHT);
+        UsernameLabel.setId("color-text");
+        UsernameLabel.setPrefHeight(29.0);
+        UsernameLabel.setPrefWidth(171.0);
+        UsernameLabel.setStyle("-fx-font-size: 15; -fx-font-weight: Bold;");
+        UsernameLabel.setText("Username");
+        UsernameLabel.setTextFill(Color.valueOf("#0d0d0d"));
+        UsernameLabel.setFont(new Font("Bold", 14.0));
 
-        GridPane.setRowIndex(passwordLabel, 2);
-        passwordLabel.setAlignment(Pos.CENTER_RIGHT);
-        passwordLabel.setPrefHeight(30.0);
-        passwordLabel.setPrefWidth(168.0);
-        passwordLabel.setStyle("-fx-font-size: 20; -fx-font-weight: bold;");
-        passwordLabel.setText("Password");
-        passwordLabel.setTextFill(Color.BLACK);
+        GridPane.setRowIndex(PasswordLabel, 2);
+        PasswordLabel.setAlignment(Pos.CENTER_RIGHT);
+        PasswordLabel.setPrefHeight(30.0);
+        PasswordLabel.setPrefWidth(172.0);
+        PasswordLabel.setStyle("-fx-font-size: 15; -fx-font-weight: bold;");
+        PasswordLabel.setText("Password");
+        PasswordLabel.setTextAlignment(TextAlignment.CENTER);
+        PasswordLabel.setTextFill(Color.valueOf("#030303"));
+
+        GridPane.setColumnIndex(passwordField, 1);
+        GridPane.setRowIndex(passwordField, 2);
+        passwordField.setMaxHeight(anchorPane.USE_PREF_SIZE);
+        passwordField.setMaxWidth(anchorPane.USE_PREF_SIZE);
+        passwordField.setPrefHeight(25.0);
+        passwordField.setPrefWidth(184.0);
+        passwordField.setPromptText("Enter password");
 
         GridPane.setColumnIndex(usernameField, 1);
         GridPane.setRowIndex(usernameField, 1);
         usernameField.setMaxHeight(25.0);
-        usernameField.setMaxWidth(164.0);
+        usernameField.setMaxWidth(183.0);
+        usernameField.setMinHeight(20.0);
+        usernameField.setMinWidth(20.0);
+        usernameField.setPrefHeight(25.0);
+        usernameField.setPrefWidth(179.0);
         usernameField.setPromptText("Enter username");
+        GridPane.setMargin(usernameField, new Insets(0.0));
 
-        GridPane.setColumnIndex(passwordField, 1);
-        GridPane.setRowIndex(passwordField, 2);
-        passwordField.setMaxHeight(25.0);
-        passwordField.setMaxWidth(164.0);
-        passwordField.setPromptText("Enter password");
+        buttonLogin.setLayoutX(202.0);
+        buttonLogin.setLayoutY(311.0);
+        buttonLogin.setOnAction(event -> {
+            loginController.authenticateUser(usernameField,passwordField,errorText,stage);
+        });
+        buttonLogin.setPrefHeight(25.0);
+        buttonLogin.setPrefWidth(95.0);
+        buttonLogin.getStyleClass().add("login-but");
+        buttonLogin.setText("Login");
 
-        loginButton.setLayoutX(412.0);
-        loginButton.setLayoutY(551.0);
-        //loginButton.setOnAction(UserManager::authenticate);
-        loginButton.setPrefHeight(25.0);
-        loginButton.setPrefWidth(96.0);
-        loginButton.getStyleClass().add("login");
-        loginButton.setText("Login");
+        buttonCancel.setLayoutX(328.0);
+        buttonCancel.setLayoutY(311.0);
+        buttonCancel.setOnAction(event -> stage.close());
+        buttonCancel.setPrefHeight(25.0);
+        buttonCancel.setPrefWidth(95.0);
+        buttonCancel.getStyleClass().add("login-but");
+        buttonCancel.setText("Exit");
 
+        columnConstraints0.setMinWidth(10.0);
+        columnConstraints0.setPrefWidth(183.0);
+        columnConstraints1.setMinWidth(10.0);
+        columnConstraints1.setPrefWidth(305.0);
+
+        rowConstraints0.setPrefHeight(107.0);
+        rowConstraints1.setPrefHeight(37.0);
+
+        errorText.setStroke(Color.BLACK);
+        errorText.setVisible(false);
+        errorText.setFont(new Font("Bold", 14.0));
+        errorText.setTextAlignment(TextAlignment.CENTER);
+        errorText.setLayoutX(225.0);
+        errorText.setLayoutY(360.0);
+
+        gridPane.getColumnConstraints().add(columnConstraints0);
         gridPane.getColumnConstraints().add(columnConstraints1);
-        gridPane.getColumnConstraints().add(columnConstraints2);
+        gridPane.getRowConstraints().add(rowConstraints0);
         gridPane.getRowConstraints().add(rowConstraints1);
-        gridPane.getRowConstraints().add(rowConstraints2);
-        gridPane.getChildren().add(title);
-        gridPane.getChildren().add(usernameLabel);
-        gridPane.getChildren().add(passwordLabel);
+        gridPane.getChildren().add(Title);
+        gridPane.getChildren().add(UsernameLabel);
+        gridPane.getChildren().add(PasswordLabel);
         gridPane.getChildren().add(passwordField);
         gridPane.getChildren().add(usernameField);
         anchorPane.getChildren().add(gridPane);
-        anchorPane.getChildren().add(loginButton);
+        anchorPane.getChildren().add(buttonLogin);
+        anchorPane.getChildren().add(buttonCancel);
+        anchorPane.getChildren().add(errorText);
 
     }
 
-    public Scene createLoginScene() {
-        return new Scene(anchorPane,877,660);
+    public PasswordField getPasswordField() {
+        return passwordField;
     }
+
+    public TextField getUsernameField() {
+        return usernameField;
+    }
+
+    public Text getErrorText() {
+        return errorText;
+    }
+
+    public Scene createLoginScene () {
+        Scene scene = new Scene(anchorPane,660,480);
+        return scene;
+    }
+    //protected  void authenticateUser(javafx.event.ActionEvent actionEvent);
+
+    //protected  void exitApp(javafx.event.ActionEvent actionEvent);
 
 }

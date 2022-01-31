@@ -1,4 +1,4 @@
-package com.example.joncdstore.controller;
+package com.example.joncdstore.model;
 
 import com.example.joncdstore.model.CD;
 import com.example.joncdstore.model.User;

@@ -8,7 +8,8 @@ import javafx.stage.Stage;
 public class App extends Application {
     @Override
     public void start(Stage stage)  {
-        stage.setScene(new Login().createLoginScene());
+        stage.setScene(new Login(stage).createLoginScene());
+        stage.setResizable(false);
         stage.setTitle("CDWORLD LOGIN");
         stage.show();
     }

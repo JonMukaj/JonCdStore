@@ -1,21 +1,9 @@
-#rainbow-text {
-	-fx-fill: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);	
+#color-text {
+	-fx-fill: linear-gradient(to right, red,black,red,black,red,black,red,black,red,black);	
 }
 
 .main {
-	-fx-background-image: url("com/example/joncdstore/img/loginBackground.jpg");
-   	 -fx-background-size: 100% 100%;
-}
+	-fx-background-image: url("com/example/joncdstore/img/login.png");
+    -fx-background-size: 100% 100%;
 
-.login{
-    -fx-background-color: olive;
-    -fx-background-radius: 0,0,0,0;
-    -fx-padding: 2 20 2 20;
-    -fx-text-fill: white;
-    -fx-border-width: 0px;
-    -fx-font-size: 12px;
-}
-
-.login:hover{
-    -fx-background-color: darkslategray;
 }
