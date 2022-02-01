@@ -1,9 +1,17 @@
 #color-text {
-	-fx-fill: linear-gradient(to right, red,black,red,black,red,black,red,black,red,black);	
+	-fx-fill: red;
 }
 
 .main {
 	-fx-background-image: url("com/example/joncdstore/img/login.png");
     -fx-background-size: 100% 100%;
 
+}
+
+.login-but:hover{
+	-fx-background-color: #00BE7C;
+}
+
+.exit-but:hover{
+	-fx-background-color: #db1b36;
 }

@@ -1,0 +1,40 @@
+
+.menuAdmin {
+	-fx-background-image: url("com/example/joncdstore/img/MenuAdmin.png");
+    -fx-background-size: 100% 100%;
+}
+
+.menuManager {
+	-fx-background-image: url("com/example/joncdstore/img/MenuManager.png");
+	-fx-background-size: 100% 100%;
+}
+
+.menuCashier {
+	-fx-background-image: url("com/example/joncdstore/img/MenuCashier.png");
+	-fx-background-size: 100% 100%;
+}
+
+.buttonAdmin {
+	-fx-background-color: linear-gradient(from 0% 30% to 100% 30%, rgb(225, 42, 60), rgba(230,52,37,1));
+}
+
+.buttonAdmin:hover {
+	-fx-background-color: rgba(210, 34, 17, 0.89);
+}
+
+.inactive
+.buttonManager {
+	-fx-background-color: linear-gradient(from 0% 30% to 100% 30%, rgb(42, 149, 225), rgb(37, 179, 230));
+}
+
+.buttonManager:hover {
+	-fx-background-color: rgba(0, 82, 140, 0.89);
+}
+
+.buttonCashier {
+	-fx-background-color: linear-gradient(from 0% 30% to 100% 30%, rgb(42, 225, 115), rgb(143, 230, 37));
+}
+
+.buttonCashier:hover {
+	-fx-background-color: rgba(87, 175, 105, 0.98);
+}

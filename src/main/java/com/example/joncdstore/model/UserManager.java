@@ -11,13 +11,13 @@ public class UserManager implements Serializable {
     private ArrayList<User> userList;
 
     public UserManager () {
-        readUser();
+        //readUser();
     }
 
     public void addUser(ArrayList<User> u) {
         try {
             userList = u;
-            FileOutputStream f1 = new FileOutputStream("user.ser",true);
+            FileOutputStream f1 = new FileOutputStream("user.ser");
             BufferedOutputStream f2 = new BufferedOutputStream(f1);
             ObjectOutputStream outObject = new ObjectOutputStream(f2);
 
@@ -43,9 +43,9 @@ public class UserManager implements Serializable {
             f2.close();
             inObject.close();
 
-            for (User u : userList) {
+            /*for (User u : userList) {
                 System.out.println(u.toString());
-            }
+            }*/
 
 
         } catch (ClassNotFoundException i) {
@@ -61,6 +61,6 @@ public class UserManager implements Serializable {
                 return u;
             }
         }
-            return null;
+        return null;
     }
 }

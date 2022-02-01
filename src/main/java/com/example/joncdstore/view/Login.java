@@ -1,6 +1,8 @@
 package com.example.joncdstore.view;
 
 import com.example.joncdstore.controller.loginController;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -105,24 +107,30 @@ public class Login {
         usernameField.setPrefHeight(25.0);
         usernameField.setPrefWidth(179.0);
         usernameField.setPromptText("Enter username");
-        GridPane.setMargin(usernameField, new Insets(0.0));
 
+        buttonLogin.setStyle("-fx-background-radius: 8;" +
+                "-fx-background-insets: 0, 0 1 1 0;");
         buttonLogin.setLayoutX(202.0);
         buttonLogin.setLayoutY(311.0);
-        buttonLogin.setOnAction(event -> {
-            loginController.authenticateUser(usernameField,passwordField,errorText,stage);
+        buttonLogin.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                loginController.authenticateUser(usernameField,passwordField,errorText,stage);
+            }
         });
         buttonLogin.setPrefHeight(25.0);
         buttonLogin.setPrefWidth(95.0);
         buttonLogin.getStyleClass().add("login-but");
         buttonLogin.setText("Login");
 
+        buttonCancel.setStyle("-fx-background-radius: 8;" +
+                "-fx-background-insets: 0, 0 1 1 0;");
         buttonCancel.setLayoutX(328.0);
         buttonCancel.setLayoutY(311.0);
         buttonCancel.setOnAction(event -> stage.close());
         buttonCancel.setPrefHeight(25.0);
         buttonCancel.setPrefWidth(95.0);
-        buttonCancel.getStyleClass().add("login-but");
+        buttonCancel.getStyleClass().add("exit-but");
         buttonCancel.setText("Exit");
 
         columnConstraints0.setMinWidth(10.0);
@@ -133,7 +141,7 @@ public class Login {
         rowConstraints0.setPrefHeight(107.0);
         rowConstraints1.setPrefHeight(37.0);
 
-        errorText.setStroke(Color.BLACK);
+        errorText.setFill(Color.valueOf("#FF0000"));
         errorText.setVisible(false);
         errorText.setFont(new Font("Bold", 14.0));
         errorText.setTextAlignment(TextAlignment.CENTER);
@@ -172,8 +180,5 @@ public class Login {
         Scene scene = new Scene(anchorPane,660,480);
         return scene;
     }
-    //protected  void authenticateUser(javafx.event.ActionEvent actionEvent);
-
-    //protected  void exitApp(javafx.event.ActionEvent actionEvent);
 
 }

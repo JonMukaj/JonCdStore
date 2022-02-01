@@ -1,32 +1,36 @@
 package com.example.joncdstore.view;
 
-import javafx.scene.Scene;
+import com.example.joncdstore.controller.MenuController;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.function.Consumer;
+
 public class MainMenu  {
 
-    private final AnchorPane mainMenu;
-    protected final Text Name;
-    protected final AnchorPane anchorPane;
-    protected final Button billBt;
-    protected final Button performanceBt;
-    protected final Button statisticsBt;
-    protected final Button employeesBt;
-    protected final Button financesBt;
-    protected final Button logisticsBt;
-    protected final Button accountBt;
-    protected final Button logoutBt;
-    protected final TabPane tabPane;
-    protected final Text UserType;
-    private final Stage stage;
+    protected AnchorPane mainMenu;
+    protected Text Name;
+    protected AnchorPane anchorPane;
+    protected Button billBt;
+    protected Button performanceBt;
+    protected Button statisticsBt;
+    protected Button employeesBt;
+    protected Button financesBt;
+    protected Button logisticsBt;
+    protected Button accountBt;
+    protected Button logoutBt;
+    protected TabPane tabPane;
+    protected Stage stage;
+    protected Text UserType;
 
     public MainMenu(Stage stage) {
+
         this.stage = stage;
 
         mainMenu = new AnchorPane();
@@ -41,33 +45,22 @@ public class MainMenu  {
         accountBt = new Button();
         logoutBt = new Button();
         tabPane = new TabPane();
-        UserType = new Text();
 
-        mainMenu.setId("color-text");
-        /*mainMenu.setMaxHeight(mainMenu.USE_PREF_SIZE);
-        mainMenu.setMaxWidth(mainMenu.USE_PREF_SIZE);
-        mainMenu.setMinHeight(mainMenu/USE_PREF_SIZE);
-        mainMenu.setMinWidth(USE_PREF_SIZE);*/
         mainMenu.setPrefHeight(700.0);
-        mainMenu.setPrefWidth(1000.0);
-        mainMenu.getStyleClass().add("menu");
-        mainMenu.getStylesheets().add(this.getClass().getResource("/FXstyleMainMenu.css").toExternalForm());
+        mainMenu.setPrefWidth(1001.0);
+        mainMenu.getStylesheets().add(this.getClass().getResource("/Menu.css").toExternalForm());
 
-        Name.setId("color-text1");
         Name.setLayoutX(33.0);
         Name.setLayoutY(67.0);
-        Name.setStyle("-fx-font-family: 'Brush Script MT'; -fx-fill: red; -fx-font-size: 40;");
         Name.setText("C D - W O R L D");
-        Name.setWrappingWidth(335);
-        Name.setFont(new Font(48.0));
+        Name.setWrappingWidth(440);
 
         anchorPane.setLayoutX(14.0);
         anchorPane.setLayoutY(107.0);
         anchorPane.setMinHeight(0.0);
         anchorPane.setMinWidth(0.0);
         anchorPane.setPrefHeight(579.0);
-        anchorPane.setPrefWidth(215.0);
-        anchorPane.getStyleClass().add("button");
+        anchorPane.setPrefWidth(200.0);
 
         billBt.setLayoutX(-1.0);
         billBt.setOnAction(null);
@@ -76,7 +69,7 @@ public class MainMenu  {
         billBt.setStyle("-fx-font-size: 25;");
         billBt.setText("BILL");
         billBt.setTextFill(Color.valueOf("#0d0d0d"));
-        billBt.setFont(new Font("System Bold", 12.0));
+        //billBt.getStyleClass().add("buttonAdmin");
 
         performanceBt.setLayoutX(-1.0);
         performanceBt.setLayoutY(142.0);
@@ -86,6 +79,7 @@ public class MainMenu  {
         performanceBt.setStyle("-fx-font-size: 25;");
         performanceBt.setText("PERFORMANCE");
         performanceBt.setTextFill(Color.valueOf("#0d0d0d"));
+        //performanceBt.getStyleClass().add("buttonAdmin");
 
         statisticsBt.setLayoutX(-1.0);
         statisticsBt.setLayoutY(216.0);
@@ -95,6 +89,7 @@ public class MainMenu  {
         statisticsBt.setStyle("-fx-font-size: 25;");
         statisticsBt.setText("STATISTICS");
         statisticsBt.setTextFill(Color.valueOf("#0d0d0d"));
+        //statisticsBt.getStyleClass().add("buttonAdmin");
 
         employeesBt.setLayoutX(-1.0);
         employeesBt.setLayoutY(290.0);
@@ -104,6 +99,7 @@ public class MainMenu  {
         employeesBt.setStyle("-fx-font-size: 25;");
         employeesBt.setText("EMPLOYEES");
         employeesBt.setTextFill(Color.valueOf("#0d0d0d"));
+        //employeesBt.getStyleClass().add("buttonAdmin");
 
         financesBt.setLayoutX(-1.0);
         financesBt.setLayoutY(364.0);
@@ -133,12 +129,22 @@ public class MainMenu  {
 
         logoutBt.setLayoutX(-1.0);
         logoutBt.setLayoutY(511.0);
-        logoutBt.setOnAction(null);
+        logoutBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                MenuController.logOut(stage);
+            }
+        });
         logoutBt.setPrefHeight(68.0);
         logoutBt.setPrefWidth(209.0);
         logoutBt.setStyle("-fx-font-size: 25;");
         logoutBt.setText("LOG OUT");
         logoutBt.setTextFill(Color.valueOf("#0d0d0d"));
+
+        UserType = new Text();
+        UserType.setLayoutX(703.0);
+        UserType.setLayoutY(67.0);
+        UserType.setWrappingWidth(430);
 
         tabPane.setLayoutX(235.0);
         tabPane.setLayoutY(107.0);
@@ -146,35 +152,12 @@ public class MainMenu  {
         tabPane.setPrefWidth(729.0);
         //tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
-        UserType.setId("color-text1");
-        UserType.setLayoutX(703.0);
-        UserType.setLayoutY(67.0);
-        UserType.setStyle("-fx-font-family: 'Brush Script MT'; -fx-fill: red; -fx-font-size: 40;");
-        UserType.setText("CASHIER");
-        UserType.setWrappingWidth(335);
-        UserType.setFont(new Font(48.0));
 
-        mainMenu.getChildren().add(Name);
-        anchorPane.getChildren().add(billBt);
-        anchorPane.getChildren().add(performanceBt);
-        anchorPane.getChildren().add(statisticsBt);
-        anchorPane.getChildren().add(employeesBt);
-        anchorPane.getChildren().add(financesBt);
-        anchorPane.getChildren().add(logisticsBt);
-        anchorPane.getChildren().add(accountBt);
-        anchorPane.getChildren().add(logoutBt);
-        mainMenu.getChildren().add(anchorPane);
-        mainMenu.getChildren().add(tabPane);
-        mainMenu.getChildren().add(UserType);
 
     }
 
-    public Scene createMainMenuScene () {
-        Scene scene = new Scene(mainMenu,1000,700);
-        return scene;
-    }
 
-   /* protected void showBill(javafx.event.ActionEvent actionEvent);
+    /*protected void showBill(javafx.event.ActionEvent actionEvent);
 
     protected void showPerformance(javafx.event.ActionEvent actionEvent);
 
