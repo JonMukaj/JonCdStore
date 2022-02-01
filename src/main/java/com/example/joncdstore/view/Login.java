@@ -53,7 +53,7 @@ public class Login {
         errorText = new Text("Wrong Username or Password!");
 
         anchorPane.getStyleClass().add("main");
-        anchorPane.getStylesheets().add(this.getClass().getResource("/FXstyle.css").toExternalForm());
+        anchorPane.getStylesheets().add(this.getClass().getResource("/FXstyleLogin.css").toExternalForm());
 
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setLayoutX(84.0);

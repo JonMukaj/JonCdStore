@@ -3,6 +3,7 @@ package com.example.joncdstore.controller;
 import com.example.joncdstore.model.User;
 import com.example.joncdstore.model.UserManager;
 import com.example.joncdstore.view.Login;
+import com.example.joncdstore.view.MainMenu;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -13,7 +14,6 @@ import java.io.File;
 public class loginController {
 
     public static void authenticateUser(TextField usernameField, PasswordField passwordField, Text errorText, Stage stage) {
-        //Button button = (Button) e.getSource();
         String username = usernameField.getText();
         String password = passwordField.getText();
 
@@ -25,7 +25,7 @@ public class loginController {
             {
                 System.out.println("Logged in");
                 stage.close();
-                stage.setScene(new Login(stage).createLoginScene());
+                stage.setScene(new MainMenu(stage).createMainMenuScene());
                 stage.show();
             }
         }
@@ -34,7 +34,7 @@ public class loginController {
             System.out.println("Logged in");
             User adminUser = new User("admin","admin",1);
             stage.close();
-            stage.setScene(new Login(stage).createLoginScene());
+            stage.setScene(new MainMenu(stage).createMainMenuScene());
             stage.show();
         }
         else {

@@ -7,7 +7,6 @@ import java.util.UUID;
 public class User implements Serializable {
     private static final long serialVersionUID = -9219894574363813548L;
 
-    private final String ID;
     private String username;
     private String password;
     private int privilege;
@@ -20,7 +19,6 @@ public class User implements Serializable {
     private Date employmentDate;
 
     public User(String username,String password, int privilege) {
-        this.ID = "2002";
         this.username = username;
         this.password = password;
         this.privilege = privilege;
@@ -28,7 +26,6 @@ public class User implements Serializable {
 
     //user constructor
     public User(String username,String password, int privilege,String name, String surname,String birthday,String phone,String email,double salary) {
-        this.ID = UUID.randomUUID().toString();
         this.username = username;
         this.password = password;
         this.privilege = privilege;
@@ -41,10 +38,6 @@ public class User implements Serializable {
         this.employmentDate = new Date();
     }
 
-
-    public String getID() {
-        return ID;
-    }
 
     public String getUsername() {
         return username;
@@ -89,8 +82,7 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "ID='" + ID + '\'' +
-                ", username='" + username + '\'' +
+                "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", privilege=" + privilege +
                 ", name='" + name + '\'' +
