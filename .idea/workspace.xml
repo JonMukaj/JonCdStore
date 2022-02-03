@@ -4,7 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37fc5751-251d-4809-a266-a37940f67ef1" name="Changes" comment="View for each type of user done." />
+    <list default="true" id="37fc5751-251d-4809-a266-a37940f67ef1" name="Changes" comment="View for each type of user done.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/AccountController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/GENDER.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/ChangeName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ChangeInfo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/joncdstore/Login.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/Login.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/controller/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/controller/MenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/controller/loginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/controller/loginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/UserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/UserManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/Login$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/Login$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/MainMenu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/MainMenu$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/MainMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/MainMenuAdmin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/MainMenuAdmin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/MainMenuCashier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/MainMenuCashier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/MainMenuManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/MainMenuManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user.ser" beforeDir="false" afterPath="$PROJECT_DIR$/user.ser" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +40,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/main" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,6 +78,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jonim\OneDrive\Desktop\JonCdStore\src\main\java\com\example\joncdstore\view" />
       <recent name="C:\Users\jonim\OneDrive\Desktop\JonCdStore\src\main\resources" />
     </key>
   </component>
@@ -96,7 +129,10 @@
       <updated>1643675299952</updated>
       <workItem from="1643675304357" duration="112000" />
       <workItem from="1643675499228" duration="637000" />
-      <workItem from="1643732312544" duration="18678000" />
+      <workItem from="1643732312544" duration="18969000" />
+      <workItem from="1643819141714" duration="16692000" />
+      <workItem from="1643849018727" duration="145000" />
+      <workItem from="1643849189355" duration="1116000" />
     </task>
     <task id="LOCAL-00001" summary="View for each type of user done.">
       <created>1643756029894</created>
@@ -112,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643756070478</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="View for each type of user done.">
+      <created>1643756544600</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1643756544600</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,7 +171,13 @@
         </entry>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

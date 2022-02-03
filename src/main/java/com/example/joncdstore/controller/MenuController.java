@@ -1,18 +1,18 @@
 package com.example.joncdstore.controller;
 
 import com.example.joncdstore.App;
+import com.example.joncdstore.view.Account;
 import com.example.joncdstore.view.Login;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import java.io.BufferedInputStream;
 
 public class MenuController {
 
@@ -50,6 +50,10 @@ public class MenuController {
         Scene scene = new Scene(box,200,60);
         window.setScene(scene);
         window.showAndWait();
+    }
+
+    public static void createAccountNode(AnchorPane mainMenu) {
+        mainMenu.getChildren().add(new Account().getAccountNode());
     }
 
 }

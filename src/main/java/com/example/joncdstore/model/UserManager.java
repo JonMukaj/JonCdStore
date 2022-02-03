@@ -63,4 +63,8 @@ public class UserManager implements Serializable {
         }
         return null;
     }
+
+    public ArrayList<User> getUserList() {
+        return userList;
+    }
 }

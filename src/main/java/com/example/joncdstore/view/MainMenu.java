@@ -121,6 +121,12 @@ public class MainMenu  {
 
         accountBt.setLayoutX(-1.0);
         accountBt.setLayoutY(438.0);
+        accountBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                MenuController.createAccountNode(mainMenu);
+            }
+        });
         accountBt.setPrefHeight(74.0);
         accountBt.setPrefWidth(209.0);
         accountBt.setStyle("-fx-font-size: 25;");
@@ -146,13 +152,6 @@ public class MainMenu  {
         UserType.setLayoutY(67.0);
         UserType.setWrappingWidth(430);
 
-        tabPane.setLayoutX(235.0);
-        tabPane.setLayoutY(107.0);
-        tabPane.setPrefHeight(579.0);
-        tabPane.setPrefWidth(729.0);
-        //tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-
-
 
     }
 
@@ -167,8 +166,6 @@ public class MainMenu  {
 
     protected void showFinances(javafx.event.ActionEvent actionEvent);
 
-    protected void showLogistics(javafx.event.ActionEvent actionEvent);
-
-    protected void logOut(javafx.event.ActionEvent actionEvent);*/
+    protected void showLogistics(javafx.event.ActionEvent actionEvent);*/
 
 }
