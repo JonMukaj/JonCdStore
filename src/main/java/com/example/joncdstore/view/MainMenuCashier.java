@@ -1,5 +1,6 @@
 package com.example.joncdstore.view;
 
+import com.example.joncdstore.model.User;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -7,8 +8,8 @@ import javafx.stage.Stage;
 public class MainMenuCashier extends MainMenu{
 
 
-    public MainMenuCashier(Stage stage) {
-        super(stage);
+    public MainMenuCashier(User u,Stage stage) {
+        super(u,stage);
 
         mainMenu.getStyleClass().add("menuCashier");
 

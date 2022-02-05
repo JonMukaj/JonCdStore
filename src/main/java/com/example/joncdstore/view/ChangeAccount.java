@@ -1,29 +1,37 @@
 package com.example.joncdstore.view;
 
-import com.example.joncdstore.controller.MenuController;
+import com.example.joncdstore.controller.AccountController;
+import com.example.joncdstore.model.GENDER;
 import com.example.joncdstore.model.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
+import javafx.scene.control.SplitMenuButton;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
-public class Account{
+public class ChangeAccount {
 
     private final ScrollPane scrollPane;
     private final AnchorPane outerAnchor;
-    private final Button editInfoBt;
+    private final Button saveChangesBt;
     private final Label basicLabel;
     private final Label contactLabel;
     private final Label securityLabel;
-    protected final Label professionLabel;
+    private final Label professionLabel;
     private final HBox basicBox;
     private final AnchorPane basicAnchor;
     private final Label nameLabel;
@@ -31,21 +39,25 @@ public class Account{
     private final Label genderLabel;
     private final Separator sep1;
     private final Separator sep2;
-    private final Text genderField;
-    private final Text nameField;
-    private final Text birthdayField;
+    private final TextField namePrompt;
+    private final DatePicker datePrompt;
+    private final SplitMenuButton genderPrompt;
+    private final MenuItem male;
+    private final MenuItem female;
+    private final MenuItem n;
     private final HBox contactBox;
     private final AnchorPane contactAnchor;
     private final Label emailLabel;
     private final Label phoneLabel;
     private final Separator sep3;
-    private final Text emailField;
-    private final Text phoneField;
+    private final TextField emailPrompt;
+    private final TextField phonePrompt;
     private final HBox securityBox;
     private final AnchorPane securityAnchor;
     private final Label usernameLabel;
     private final Label passwordLabel;
     private final Separator sep4;
+    private final Button changePassBt;
     private final Text usernameField;
     private final PasswordField passwordField;
     private final HBox professionBox;
@@ -58,12 +70,13 @@ public class Account{
     private final Text privilegeField;
     private final Text salaryField;
     private final Text employmentField;
+    private final Button cancelChangesBt;
 
-    public Account(AnchorPane mainMenu, User u) {
+    public ChangeAccount(AnchorPane mainMenu, User u) {
 
         scrollPane = new ScrollPane();
         outerAnchor = new AnchorPane();
-        editInfoBt = new Button();
+        saveChangesBt = new Button();
         basicLabel = new Label();
         contactLabel = new Label();
         securityLabel = new Label();
@@ -75,21 +88,25 @@ public class Account{
         genderLabel = new Label();
         sep1 = new Separator();
         sep2 = new Separator();
-        genderField = new Text();
-        nameField = new Text();
-        birthdayField = new Text();
+        namePrompt = new TextField();
+        datePrompt = new DatePicker();
+        genderPrompt = new SplitMenuButton();
+        male = new MenuItem();
+        female = new MenuItem();
+        n = new MenuItem();
         contactBox = new HBox();
         contactAnchor = new AnchorPane();
         emailLabel = new Label();
         phoneLabel = new Label();
         sep3 = new Separator();
-        emailField = new Text();
-        phoneField = new Text();
+        emailPrompt = new TextField();
+        phonePrompt = new TextField();
         securityBox = new HBox();
         securityAnchor = new AnchorPane();
         usernameLabel = new Label();
         passwordLabel = new Label();
         sep4 = new Separator();
+        changePassBt = new Button();
         usernameField = new Text();
         passwordField = new PasswordField();
         professionBox = new HBox();
@@ -102,24 +119,40 @@ public class Account{
         privilegeField = new Text();
         salaryField = new Text();
         employmentField = new Text();
+        cancelChangesBt = new Button();
 
         outerAnchor.setPrefHeight(875.0);
         outerAnchor.setPrefWidth(728.0);
 
-        editInfoBt.setLayoutX(605.0);
-        editInfoBt.setLayoutY(829.0);
-        editInfoBt.setOnAction(new EventHandler<ActionEvent>() {
+        saveChangesBt.setLayoutX(605.0);
+        saveChangesBt.setLayoutY(829.0);
+        saveChangesBt.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                MenuController.editAccountNode(mainMenu,u);
-            }
-        });
-        editInfoBt.setPrefHeight(32.0);
-        editInfoBt.setPrefWidth(74.0);
-        editInfoBt.setStyle("-fx-background-color: #3274D2; -fx-text-fill: #FFFFFF;");
-        editInfoBt.setText("Edit Info");
+                int idx = namePrompt.getText().lastIndexOf(' ');
+                String firstName = namePrompt.getText().substring(0,idx);
+                String lastName = namePrompt.getText().substring(idx +1); //namePrompt.getText().length()
 
-        if (u.getUsername().matches("admin") && u.getPassword().matches("admin")) editInfoBt.setVisible(false);
+                u.setName(firstName);
+                u.setSurname(lastName);
+
+                ZoneId defaultZoneId = ZoneId.systemDefault();
+
+                //local date + atStartOfDay() + default time zone + toInstant() = Date
+                Date date = Date.from(datePrompt.getValue().atStartOfDay(defaultZoneId).toInstant());
+                SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
+                u.setBirthday(DateFor.format(date));
+
+                u.setEmail(emailPrompt.getText());
+                u.setPhone(phonePrompt.getText());
+
+                AccountController.saveChanges(mainMenu,u);
+            }
+        });//this::saveChanges
+        saveChangesBt.setPrefHeight(32.0);
+        saveChangesBt.setPrefWidth(74.0);
+        saveChangesBt.setStyle("-fx-background-color: #3274D2; -fx-text-fill: #FFFFFF;");
+        saveChangesBt.setText("Save");
 
         basicLabel.setLayoutX(45.0);
         basicLabel.setLayoutY(25.0);
@@ -175,23 +208,36 @@ public class Account{
         sep2.setPrefHeight(4.0);
         sep2.setPrefWidth(604.0);
 
-        genderField.setLayoutX(100.0);
-        genderField.setLayoutY(140.0);
-        genderField.setStyle("-fx-font-size: 20;");
-        genderField.setText(u.getGender().getText());
-        genderField.setWrappingWidth(128.0);
+        namePrompt.setLayoutX(104.0);
+        namePrompt.setLayoutY(14.0);
+        namePrompt.setStyle("-fx-font-size: 15;");
+        namePrompt.setPromptText(u.getName() + " " + u.getSurname());
 
-        nameField.setLayoutX(92.0);
-        nameField.setLayoutY(37.0);
-        nameField.setStyle("-fx-font-size: 20;");
-        nameField.setText(u.getName() + " " + u.getSurname());
-        nameField.setWrappingWidth(128.0);
+        datePrompt.setLayoutX(104.0);
+        datePrompt.setLayoutY(67.0);
+        datePrompt.setPrefHeight(25.0);
+        datePrompt.setPrefWidth(171.0);
+        datePrompt.setPromptText(u.getBirthday());
 
-        birthdayField.setLayoutX(100.0);
-        birthdayField.setLayoutY(86.0);
-        birthdayField.setStyle("-fx-font-size: 20;");
-        birthdayField.setText(u.getBirthday());
-        birthdayField.setWrappingWidth(128.0);
+        genderPrompt.setLayoutX(104.0);
+        genderPrompt.setLayoutY(121.0);
+        genderPrompt.setText(u.getGender().getText());
+
+        male.setText("Male");
+        male.setOnAction(event -> {
+            u.setGender(GENDER.MALE);
+            genderPrompt.setText("Male");
+        });
+        female.setText("Female");
+        female.setOnAction(event -> {
+            u.setGender(GENDER.FEMALE);
+            genderPrompt.setText("Female");
+        });
+        n.setText("Not Specified");
+        n.setOnAction(event -> {
+            u.setGender(GENDER.UNSPECIFIED);
+            genderPrompt.setText("Not Specified");
+        });
 
         contactBox.setLayoutX(45.0);
         contactBox.setLayoutY(299.0);
@@ -217,18 +263,16 @@ public class Account{
         sep3.setPrefHeight(4.0);
         sep3.setPrefWidth(604.0);
 
-        emailField.setLayoutX(74.0);
-        emailField.setLayoutY(34.0);
-        emailField.setStyle("-fx-font-size: 20;");
-        emailField.setText(u.getEmail());
-        emailField.setWrappingWidth(262.0);
+        emailPrompt.setLayoutX(84.0);
+        emailPrompt.setLayoutY(14.0);
+        emailPrompt.setStyle("-fx-font-size: 15;");
+        emailPrompt.setPromptText(u.getEmail());
 
-        phoneField.setLayoutX(84.0);
-        phoneField.setLayoutY(87.0);
-        phoneField.setStyle("-fx-font-size: 20;");
+        phonePrompt.setLayoutX(84.0);
+        phonePrompt.setLayoutY(64.0);
+        phonePrompt.setStyle("-fx-font-size: 15;");
         String phoneFormat = u.getPhone().substring(0,3) + " " + u.getPhone().substring(3,5) + " " + u.getPhone().substring(5,7) + " " + u.getPhone().substring(7,10);
-        phoneField.setText(phoneFormat);
-        phoneField.setWrappingWidth(145.0);
+        phonePrompt.setPromptText(phoneFormat);
 
         securityBox.setLayoutX(45.0);
         securityBox.setLayoutY(480.0);
@@ -253,6 +297,12 @@ public class Account{
         sep4.setLayoutY(53.0);
         sep4.setPrefHeight(4.0);
         sep4.setPrefWidth(604.0);
+
+        changePassBt.setLayoutX(542.0);
+        changePassBt.setLayoutY(67.0);
+        changePassBt.setOnAction(null);//this::changePassword
+        changePassBt.setStyle("-fx-border-radius: 5;");
+        changePassBt.setText("Change");
 
         usernameField.setLayoutX(124.0);
         usernameField.setLayoutY(37.0);
@@ -320,9 +370,21 @@ public class Account{
         employmentField.setText(DateFor.format(u.getEmploymentDate()));
         employmentField.setWrappingWidth(111.0);
 
+        cancelChangesBt.setLayoutX(517.0);
+        cancelChangesBt.setLayoutY(829.0);
+        cancelChangesBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                AccountController.cancelChanges(mainMenu, u);
+            }
+        });//this::cancelChanges
+        cancelChangesBt.setPrefHeight(32.0);
+        cancelChangesBt.setPrefWidth(74.0);
+        cancelChangesBt.setStyle("-fx-background-color: transparent; -fx-text-fill: #3274D2;");
+        cancelChangesBt.setText("Cancel");
 
 
-        outerAnchor.getChildren().add(editInfoBt);
+        outerAnchor.getChildren().add(saveChangesBt);
         outerAnchor.getChildren().add(basicLabel);
         outerAnchor.getChildren().add(contactLabel);
         outerAnchor.getChildren().add(securityLabel);
@@ -332,21 +394,25 @@ public class Account{
         basicAnchor.getChildren().add(genderLabel);
         basicAnchor.getChildren().add(sep1);
         basicAnchor.getChildren().add(sep2);
-        basicAnchor.getChildren().add(genderField);
-        basicAnchor.getChildren().add(nameField);
-        basicAnchor.getChildren().add(birthdayField);
+        basicAnchor.getChildren().add(namePrompt);
+        basicAnchor.getChildren().add(datePrompt);
+        genderPrompt.getItems().add(male);
+        genderPrompt.getItems().add(female);
+        genderPrompt.getItems().add(n);
+        basicAnchor.getChildren().add(genderPrompt);
         basicBox.getChildren().add(basicAnchor);
         outerAnchor.getChildren().add(basicBox);
         contactAnchor.getChildren().add(emailLabel);
         contactAnchor.getChildren().add(phoneLabel);
         contactAnchor.getChildren().add(sep3);
-        contactAnchor.getChildren().add(emailField);
-        contactAnchor.getChildren().add(phoneField);
+        contactAnchor.getChildren().add(emailPrompt);
+        contactAnchor.getChildren().add(phonePrompt);
         contactBox.getChildren().add(contactAnchor);
         outerAnchor.getChildren().add(contactBox);
         securityAnchor.getChildren().add(usernameLabel);
         securityAnchor.getChildren().add(passwordLabel);
         securityAnchor.getChildren().add(sep4);
+        securityAnchor.getChildren().add(changePassBt);
         securityAnchor.getChildren().add(usernameField);
         securityAnchor.getChildren().add(passwordField);
         securityBox.getChildren().add(securityAnchor);
@@ -361,7 +427,7 @@ public class Account{
         professionAnchor.getChildren().add(employmentField);
         professionBox.getChildren().add(professionAnchor);
         outerAnchor.getChildren().add(professionBox);
-
+        outerAnchor.getChildren().add(cancelChangesBt);
 
         scrollPane.setContent(outerAnchor);
         scrollPane.setHbarPolicy(javafx.scene.control.ScrollPane.ScrollBarPolicy.ALWAYS);
@@ -376,8 +442,35 @@ public class Account{
         return scrollPane;
     }
 
-    // protected abstract void editInfo(javafx.event.ActionEvent actionEvent);
+    public TextField getNamePrompt() {
+        return namePrompt;
+    }
 
-    //protected abstract void changePassword(javafx.event.ActionEvent actionEvent);
+    public DatePicker getDatePrompt() {
+        return datePrompt;
+    }
 
+    public SplitMenuButton getGenderPrompt() {
+        return genderPrompt;
+    }
+
+    public MenuItem getMale() {
+        return male;
+    }
+
+    public MenuItem getFemale() {
+        return female;
+    }
+
+    public MenuItem getN() {
+        return n;
+    }
+
+    public TextField getEmailPrompt() {
+        return emailPrompt;
+    }
+
+    public TextField getPhonePrompt() {
+        return phonePrompt;
+    }
 }

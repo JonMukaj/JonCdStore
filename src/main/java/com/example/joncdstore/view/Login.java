@@ -1,9 +1,8 @@
 package com.example.joncdstore.view;
 
-import com.example.joncdstore.controller.loginController;
+import com.example.joncdstore.controller.LoginController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -115,7 +114,7 @@ public class Login {
         buttonLogin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                loginController.authenticateUser(usernameField,passwordField,errorText,stage);
+                LoginController.authenticateUser(usernameField,passwordField,errorText,stage);
             }
         });
         buttonLogin.setPrefHeight(25.0);

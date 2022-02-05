@@ -1,7 +1,9 @@
 package com.example.joncdstore.controller;
 
 import com.example.joncdstore.App;
+import com.example.joncdstore.model.User;
 import com.example.joncdstore.view.Account;
+import com.example.joncdstore.view.ChangeAccount;
 import com.example.joncdstore.view.Login;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -52,8 +54,13 @@ public class MenuController {
         window.showAndWait();
     }
 
-    public static void createAccountNode(AnchorPane mainMenu) {
-        mainMenu.getChildren().add(new Account().getAccountNode());
+    public static void createAccountNode(AnchorPane mainMenu, User u) {
+        mainMenu.getChildren().add(new Account(mainMenu,u).getScrollPane());
     }
+
+    public static void editAccountNode(AnchorPane mainMenu, User u) {
+        mainMenu.getChildren().add(new ChangeAccount(mainMenu,u).getScrollPane());
+    }
+
 
 }

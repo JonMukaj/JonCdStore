@@ -43,9 +43,9 @@ public class UserManager implements Serializable {
             f2.close();
             inObject.close();
 
-            /*for (User u : userList) {
+            for (User u : userList) {
                 System.out.println(u.toString());
-            }*/
+            }
 
 
         } catch (ClassNotFoundException i) {

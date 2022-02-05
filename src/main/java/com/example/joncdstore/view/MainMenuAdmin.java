@@ -1,13 +1,14 @@
 package com.example.joncdstore.view;
 
+import com.example.joncdstore.model.User;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class MainMenuAdmin extends MainMenu{
 
-    public MainMenuAdmin(Stage stage) {
-        super(stage);
+    public MainMenuAdmin(User u,Stage stage) {
+        super(u,stage);
 
         mainMenu.getStyleClass().add("menuAdmin");
 

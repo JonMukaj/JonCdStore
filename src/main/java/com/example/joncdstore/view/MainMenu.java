@@ -1,6 +1,7 @@
 package com.example.joncdstore.view;
 
 import com.example.joncdstore.controller.MenuController;
+import com.example.joncdstore.model.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -10,7 +11,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.util.function.Consumer;
 
 public class MainMenu  {
 
@@ -29,7 +29,7 @@ public class MainMenu  {
     protected Stage stage;
     protected Text UserType;
 
-    public MainMenu(Stage stage) {
+    public MainMenu(User u, Stage stage) {
 
         this.stage = stage;
 
@@ -124,7 +124,7 @@ public class MainMenu  {
         accountBt.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                MenuController.createAccountNode(mainMenu);
+                MenuController.createAccountNode(mainMenu, u);
             }
         });
         accountBt.setPrefHeight(74.0);
@@ -155,8 +155,10 @@ public class MainMenu  {
 
     }
 
-
-    /*protected void showBill(javafx.event.ActionEvent actionEvent);
+    public AnchorPane getMainMenu() {
+        return mainMenu;
+    }
+/*protected void showBill(javafx.event.ActionEvent actionEvent);
 
     protected void showPerformance(javafx.event.ActionEvent actionEvent);
 

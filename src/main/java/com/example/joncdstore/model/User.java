@@ -4,9 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-public class User implements Serializable {
+public class User implements Serializable,Cloneable {
     private static final long serialVersionUID = -9219894574363813548L;
 
+    private final UUID id;
     private String username;
     private String password;
     private int privilege;
@@ -19,14 +20,8 @@ public class User implements Serializable {
     private double salary;
     private Date employmentDate;
 
-    public User(String username,String password, int privilege) {
-        this.username = username;
-        this.password = password;
-        this.privilege = privilege;
-    }
-
-    //user constructor
     public User(String username,String password, int privilege,String name, String surname,String birthday,GENDER gender,String phone,String email,double salary) {
+        this.id = UUID.randomUUID();
         this.username = username;
         this.password = password;
         this.privilege = privilege;
@@ -40,6 +35,9 @@ public class User implements Serializable {
         this.employmentDate = new Date();
     }
 
+    public UUID getId() {
+        return id;
+    }
 
     public String getUsername() {
         return username;
@@ -88,7 +86,8 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "username='" + username + '\'' +
+                "id=" + id +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", privilege=" + privilege +
                 ", name='" + name + '\'' +
@@ -100,6 +99,18 @@ public class User implements Serializable {
                 ", salary=" + salary +
                 ", employmentDate=" + employmentDate +
                 '}';
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+
+        return super.clone();
+    }
+
+    public String checkPrivilege() {
+        if(privilege == 1) return "Admin";
+        else if (privilege == 2) return "Manager";
+        else return "Cashier";
     }
 
     public void setPassword(String password) {
