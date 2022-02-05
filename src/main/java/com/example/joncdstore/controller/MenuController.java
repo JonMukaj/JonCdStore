@@ -48,6 +48,7 @@ public class MenuController {
         box.setPrefWidth(30);
         box.getChildren().addAll(label,boxBt);
         box.setAlignment(Pos.CENTER);
+        box.setStyle("-fx-background-color: #FFFFFF;");
 
         Scene scene = new Scene(box,200,60);
         window.setScene(scene);

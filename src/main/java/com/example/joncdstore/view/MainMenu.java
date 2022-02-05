@@ -152,7 +152,6 @@ public class MainMenu  {
         UserType.setLayoutY(67.0);
         UserType.setWrappingWidth(430);
 
-
     }
 
     public AnchorPane getMainMenu() {

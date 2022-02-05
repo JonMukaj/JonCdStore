@@ -4,6 +4,8 @@ import com.example.joncdstore.App;
 import com.example.joncdstore.model.User;
 import com.example.joncdstore.model.UserManager;
 import com.example.joncdstore.view.Account;
+import com.example.joncdstore.view.ChangeAccount;
+import com.example.joncdstore.view.ChangePassword;
 import com.example.joncdstore.view.Login;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -27,54 +29,47 @@ public class AccountController {
     public static void saveChanges(AnchorPane mainMenu,User u) {
         UserManager userManager = new UserManager();
         userManager.readUser();
+
+        int idx = 0;
         for (User i : userManager.getUserList()) {
+
             if (u.getId().compareTo(i.getId()) == 0) {
-                try {
-                    i = (User) u.clone();
-                }
-                catch (Exception e) {
-                    System.out.println(e.toString());
-                }
+                break;
             }
+            idx++;
         }
+
+        try {
+            userManager.getUserList().set(idx,(User) u.clone());
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        /*System.out.println("Cloned object");
+        for (User i : userManager.getUserList()) {
+            System.out.println(i.toString());
+        }*/
 
         userManager.addUser(userManager.getUserList());
         mainMenu.getChildren().add(new Account(mainMenu,u).getScrollPane());
     }
 
-    public static void changePassword(Stage stage) {
+    public static void changePassword(User u) {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Change Password");
         window.setResizable(false);
         window.getIcons().add(new Image(App.class.getResourceAsStream("img/icon.jpg")));
-        Label label = new Label();
-        label.setText("Do you want to log out?");
-        label.setStyle("-fx-font-size: 15; -fx-font-weight: bold;");
-
-        Button yesBt = new Button("Log out");
-        Button noBt = new Button("Cancel");
-
-        yesBt.setOnAction(e -> {
-            window.close();
-            stage.setScene(new Login(stage).createLoginScene());
-        });
-
-        noBt.setOnAction(e -> {
-            window.close();
-        });
-
-        HBox boxBt = new HBox(10);
-        boxBt.getChildren().addAll(yesBt,noBt);
-        boxBt.setAlignment(Pos.CENTER);
-
-        VBox box = new VBox(10);
-        box.setPrefWidth(30);
-        box.getChildren().addAll(label,boxBt);
-        box.setAlignment(Pos.CENTER);
-
-        Scene scene = new Scene(box,200,60);
+        Scene scene = new Scene(new ChangePassword(u,window).getAnchorPane(),330,288);
         window.setScene(scene);
         window.showAndWait();
     }
+
+
+
+    public static void cancelPassChanges(AnchorPane mainMenu, User u) {
+        mainMenu.getChildren().add(new ChangeAccount(mainMenu,u).getScrollPane());
+    }
+
 }

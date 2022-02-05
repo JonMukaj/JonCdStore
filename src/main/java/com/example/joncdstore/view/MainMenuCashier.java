@@ -18,18 +18,28 @@ public class MainMenuCashier extends MainMenu{
 
         performanceBt.getStyleClass().add("buttonCashier");
         performanceBt.setTextFill(Color.GREEN);
+        performanceBt.setOnAction(null);
+        performanceBt.getStyleClass().add("inactiveCashier");
 
         statisticsBt.getStyleClass().add("buttonCashier");
         statisticsBt.setTextFill(Color.GREEN);
+        statisticsBt.setOnAction(null);
+        statisticsBt.getStyleClass().add("inactiveCashier");
 
         employeesBt.getStyleClass().add("buttonCashier");
         employeesBt.setTextFill(Color.GREEN);
+        employeesBt.setOnAction(null);
+        employeesBt.getStyleClass().add("inactiveCashier");
 
         financesBt.getStyleClass().add("buttonCashier");
         financesBt.setTextFill(Color.GREEN);
+        financesBt.setOnAction(null);
+        financesBt.getStyleClass().add("inactiveCashier");
 
         logisticsBt.getStyleClass().add("buttonCashier");
         logisticsBt.setTextFill(Color.GREEN);
+        logisticsBt.setOnAction(null);
+        logisticsBt.getStyleClass().add("inactiveCashier");
 
         accountBt.getStyleClass().add("buttonCashier");
         accountBt.setTextFill(Color.GREEN);
@@ -43,6 +53,9 @@ public class MainMenuCashier extends MainMenu{
 
 
         Name.setStyle("-fx-font-family: 'Brush Script MT'; -fx-fill: #55FD00; -fx-font-size: 50;");
+
+
+
 
         mainMenu.getChildren().add(Name);
         anchorPane.getChildren().add(billBt);

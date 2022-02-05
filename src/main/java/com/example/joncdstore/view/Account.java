@@ -103,6 +103,8 @@ public class Account{
         salaryField = new Text();
         employmentField = new Text();
 
+        scrollPane.getStylesheets().add(this.getClass().getResource("/Menu.css").toExternalForm());
+
         outerAnchor.setPrefHeight(875.0);
         outerAnchor.setPrefWidth(728.0);
 
@@ -116,8 +118,9 @@ public class Account{
         });
         editInfoBt.setPrefHeight(32.0);
         editInfoBt.setPrefWidth(74.0);
-        editInfoBt.setStyle("-fx-background-color: #3274D2; -fx-text-fill: #FFFFFF;");
+        editInfoBt.getStyleClass().add("edit");
         editInfoBt.setText("Edit Info");
+        editInfoBt.getStyleClass().add("edit");
 
         if (u.getUsername().matches("admin") && u.getPassword().matches("admin")) editInfoBt.setVisible(false);
 
@@ -226,7 +229,12 @@ public class Account{
         phoneField.setLayoutX(84.0);
         phoneField.setLayoutY(87.0);
         phoneField.setStyle("-fx-font-size: 20;");
-        String phoneFormat = u.getPhone().substring(0,3) + " " + u.getPhone().substring(3,5) + " " + u.getPhone().substring(5,7) + " " + u.getPhone().substring(7,10);
+        String phoneFormat;
+        if (u.getPhone().length() < 10) {
+            phoneFormat = u.getPhone();
+        }
+        else
+            phoneFormat = u.getPhone().substring(0,3) + " " + u.getPhone().substring(3,5) + " " + u.getPhone().substring(5,7) + " " + u.getPhone().substring(7,10);
         phoneField.setText(phoneFormat);
         phoneField.setWrappingWidth(145.0);
 
@@ -375,9 +383,5 @@ public class Account{
     public ScrollPane getScrollPane() {
         return scrollPane;
     }
-
-    // protected abstract void editInfo(javafx.event.ActionEvent actionEvent);
-
-    //protected abstract void changePassword(javafx.event.ActionEvent actionEvent);
 
 }

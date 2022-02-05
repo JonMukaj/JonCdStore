@@ -17,10 +17,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.util.StringConverter;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class ChangeAccount {
@@ -121,6 +123,8 @@ public class ChangeAccount {
         employmentField = new Text();
         cancelChangesBt = new Button();
 
+        scrollPane.getStylesheets().add(this.getClass().getResource("/Menu.css").toExternalForm());
+
         outerAnchor.setPrefHeight(875.0);
         outerAnchor.setPrefWidth(728.0);
 
@@ -129,30 +133,38 @@ public class ChangeAccount {
         saveChangesBt.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                int idx = namePrompt.getText().lastIndexOf(' ');
-                String firstName = namePrompt.getText().substring(0,idx);
-                String lastName = namePrompt.getText().substring(idx +1); //namePrompt.getText().length()
 
-                u.setName(firstName);
-                u.setSurname(lastName);
+                if (!namePrompt.getText().trim().equals("")) {
+                    int idx = namePrompt.getText().lastIndexOf(' ');
+                    String firstName = namePrompt.getText().substring(0,idx);
+                    String lastName = namePrompt.getText().substring(idx +1); //namePrompt.getText().length()
+                    u.setName(firstName);
+                    u.setSurname(lastName);
+                }
 
-                ZoneId defaultZoneId = ZoneId.systemDefault();
+                if (datePrompt.getValue() != null) {
+                    ZoneId defaultZoneId = ZoneId.systemDefault();
+                    Date date = Date.from(datePrompt.getValue().atStartOfDay(defaultZoneId).toInstant());
+                    SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
+                    u.setBirthday(DateFor.format(date));
+                }
 
-                //local date + atStartOfDay() + default time zone + toInstant() = Date
-                Date date = Date.from(datePrompt.getValue().atStartOfDay(defaultZoneId).toInstant());
-                SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
-                u.setBirthday(DateFor.format(date));
 
-                u.setEmail(emailPrompt.getText());
-                u.setPhone(phonePrompt.getText());
+                if (!emailPrompt.getText().trim().equals("")) {
+                    u.setEmail(emailPrompt.getText());
+                }
+
+                if (!phonePrompt.getText().trim().equals("")) {
+                    u.setPhone(phonePrompt.getText());
+                }
 
                 AccountController.saveChanges(mainMenu,u);
             }
-        });//this::saveChanges
+        });
         saveChangesBt.setPrefHeight(32.0);
         saveChangesBt.setPrefWidth(74.0);
-        saveChangesBt.setStyle("-fx-background-color: #3274D2; -fx-text-fill: #FFFFFF;");
         saveChangesBt.setText("Save");
+        saveChangesBt.getStyleClass().add("edit");
 
         basicLabel.setLayoutX(45.0);
         basicLabel.setLayoutY(25.0);
@@ -218,7 +230,27 @@ public class ChangeAccount {
         datePrompt.setPrefHeight(25.0);
         datePrompt.setPrefWidth(171.0);
         datePrompt.setPromptText(u.getBirthday());
+        StringConverter converter = new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        };
+        datePrompt.setConverter(converter);
         genderPrompt.setLayoutX(104.0);
         genderPrompt.setLayoutY(121.0);
         genderPrompt.setText(u.getGender().getText());
@@ -271,7 +303,12 @@ public class ChangeAccount {
         phonePrompt.setLayoutX(84.0);
         phonePrompt.setLayoutY(64.0);
         phonePrompt.setStyle("-fx-font-size: 15;");
-        String phoneFormat = u.getPhone().substring(0,3) + " " + u.getPhone().substring(3,5) + " " + u.getPhone().substring(5,7) + " " + u.getPhone().substring(7,10);
+        String phoneFormat;
+        if (u.getPhone().length() < 10) {
+            phoneFormat = u.getPhone();
+        }
+        else
+            phoneFormat = u.getPhone().substring(0,3) + " " + u.getPhone().substring(3,5) + " " + u.getPhone().substring(5,7) + " " + u.getPhone().substring(7,10);
         phonePrompt.setPromptText(phoneFormat);
 
         securityBox.setLayoutX(45.0);
@@ -300,7 +337,12 @@ public class ChangeAccount {
 
         changePassBt.setLayoutX(542.0);
         changePassBt.setLayoutY(67.0);
-        changePassBt.setOnAction(null);//this::changePassword
+        changePassBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                AccountController.changePassword(u);
+            }
+        });
         changePassBt.setStyle("-fx-border-radius: 5;");
         changePassBt.setText("Change");
 
@@ -377,11 +419,11 @@ public class ChangeAccount {
             public void handle(ActionEvent event) {
                 AccountController.cancelChanges(mainMenu, u);
             }
-        });//this::cancelChanges
+        });
         cancelChangesBt.setPrefHeight(32.0);
         cancelChangesBt.setPrefWidth(74.0);
-        cancelChangesBt.setStyle("-fx-background-color: transparent; -fx-text-fill: #3274D2;");
         cancelChangesBt.setText("Cancel");
+        cancelChangesBt.getStyleClass().add("cancel");
 
 
         outerAnchor.getChildren().add(saveChangesBt);
