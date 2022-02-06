@@ -1,6 +1,9 @@
 package com.example.joncdstore.view;
 
+import com.example.joncdstore.controller.MenuController;
 import com.example.joncdstore.model.User;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -46,6 +49,13 @@ public class MainMenuAdmin extends MainMenu{
             billBt.setOnAction(null);
             billBt.getStyleClass().add("inactiveAdmin");
         }
+
+        employeesBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                MenuController.createEmployeeScene(u,stage);
+            }
+        });
 
         mainMenu.getChildren().add(Name);
         anchorPane.getChildren().add(billBt);

@@ -137,7 +137,7 @@ public class ChangeAccount {
                 if (!namePrompt.getText().trim().equals("")) {
                     int idx = namePrompt.getText().lastIndexOf(' ');
                     String firstName = namePrompt.getText().substring(0,idx);
-                    String lastName = namePrompt.getText().substring(idx +1); //namePrompt.getText().length()
+                    String lastName = namePrompt.getText().substring(idx +1);
                     u.setName(firstName);
                     u.setSurname(lastName);
                 }
@@ -408,8 +408,7 @@ public class ChangeAccount {
         employmentField.setLayoutX(194.0);
         employmentField.setLayoutY(141.0);
         employmentField.setStyle("-fx-font-size: 20;");
-        SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
-        employmentField.setText(DateFor.format(u.getEmploymentDate()));
+        employmentField.setText(u.getEmploymentDate());
         employmentField.setWrappingWidth(111.0);
 
         cancelChangesBt.setLayoutX(517.0);

@@ -4,6 +4,7 @@ import com.example.joncdstore.App;
 import com.example.joncdstore.model.User;
 import com.example.joncdstore.view.Account;
 import com.example.joncdstore.view.ChangeAccount;
+import com.example.joncdstore.view.Employee;
 import com.example.joncdstore.view.Login;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -47,6 +48,7 @@ public class MenuController {
         VBox box = new VBox(10);
         box.setPrefWidth(30);
         box.getChildren().addAll(label,boxBt);
+
         box.setAlignment(Pos.CENTER);
         box.setStyle("-fx-background-color: #FFFFFF;");
 
@@ -62,6 +64,13 @@ public class MenuController {
     public static void editAccountNode(AnchorPane mainMenu, User u) {
         mainMenu.getChildren().add(new ChangeAccount(mainMenu,u).getScrollPane());
     }
+
+
+    public static void createEmployeeScene(User u,Stage stage) {
+        stage.setTitle("Employee");
+        stage.setScene(new Employee(u,stage).generateEmployeeScene());
+    }
+
 
 
 }

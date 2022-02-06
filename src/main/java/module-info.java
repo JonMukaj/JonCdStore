@@ -12,5 +12,6 @@ module com.example.joncdstore {
     requires org.jetbrains.annotations;
 
     opens com.example.joncdstore to javafx.fxml;
+    opens com.example.joncdstore.model to javafx.base;
     exports com.example.joncdstore;
 }

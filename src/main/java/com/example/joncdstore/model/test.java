@@ -23,13 +23,13 @@ public class test {
         cdManager.readCD();
 
         cdManager.checkQuantity();*/
-
+/*
         ArrayList<User> userArrayList = new ArrayList<>();
-        User user1 = new User("jmukaj","jonushi",1,"Jon","Mukaj","11/02/2002",GENDER.MALE,
+        User user1 = new User("jmukaj","JonMukaj2002",1,"Jon","Mukaj","11/02/2002",GENDER.MALE,
                 "0682070864","jmukaj20@epoka.edu.al",2520);
-        User user2 = new User("fmarku","fabio2020",2,"Fabio","Marku","29/11/2001",GENDER.MALE,
+        User user2 = new User("fmarku","FabioMarku2020",2,"Fabio","Marku","29/11/2001",GENDER.MALE,
                 "0682070864","fmarku20@epoka.edu.al",3000);
-        User user3 = new User("ktenolli","kevin2021",3,"Kevin","Tenolli","06/04/2003",GENDER.MALE,
+        User user3 = new User("ktenolli","KevinTenolli2020",3,"Kevin","Tenolli","06/04/2003",GENDER.MALE,
                 "0682070864","ktenolli20@epoka.edu.al",5000);
 
         userArrayList.add(user1);
@@ -38,7 +38,7 @@ public class test {
 
         UserManager userManager = new UserManager();
         userManager.addUser(userArrayList);
-        userManager.readUser();
+        userManager.readUser();*/
     }
 
 

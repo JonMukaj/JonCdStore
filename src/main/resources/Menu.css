@@ -83,3 +83,34 @@
 .cancel:hover {
 	-fx-background-color: rgba(173, 170, 170, 0.98);
 }
+
+.add{
+	-fx-background-color: #238707; -fx-text-fill: white;
+}
+
+.add:hover{
+	-fx-background-color: #196105;
+}
+
+.remove{
+	-fx-background-color: red; -fx-text-fill: white;
+}
+
+.remove:hover{
+	-fx-background-color: #AE0A0A;
+}
+
+.modify{
+	-fx-background-color: #F0832F; -fx-text-fill: white;
+}
+
+.modify:hover{
+	-fx-background-color: #D2630F;
+}
+
+
+.table-view .table-row-cell {
+	-fx-control-inner-background: #A0D8F8;
+	-fx-control-inner-background-alt: #ECEDED;
+	-fx-table-cell-border-color:black;
+}

@@ -51,7 +51,7 @@ public class AccountController {
             System.out.println(i.toString());
         }*/
 
-        userManager.addUser(userManager.getUserList());
+        userManager.addUser();
         mainMenu.getChildren().add(new Account(mainMenu,u).getScrollPane());
     }
 

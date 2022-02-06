@@ -69,7 +69,6 @@ public class MainMenu  {
         billBt.setStyle("-fx-font-size: 25;");
         billBt.setText("BILL");
         billBt.setTextFill(Color.valueOf("#0d0d0d"));
-        //billBt.getStyleClass().add("buttonAdmin");
 
         performanceBt.setLayoutX(-1.0);
         performanceBt.setLayoutY(142.0);
@@ -79,7 +78,6 @@ public class MainMenu  {
         performanceBt.setStyle("-fx-font-size: 25;");
         performanceBt.setText("PERFORMANCE");
         performanceBt.setTextFill(Color.valueOf("#0d0d0d"));
-        //performanceBt.getStyleClass().add("buttonAdmin");
 
         statisticsBt.setLayoutX(-1.0);
         statisticsBt.setLayoutY(216.0);
@@ -89,17 +87,14 @@ public class MainMenu  {
         statisticsBt.setStyle("-fx-font-size: 25;");
         statisticsBt.setText("STATISTICS");
         statisticsBt.setTextFill(Color.valueOf("#0d0d0d"));
-        //statisticsBt.getStyleClass().add("buttonAdmin");
 
         employeesBt.setLayoutX(-1.0);
         employeesBt.setLayoutY(290.0);
-        employeesBt.setOnAction(null);
         employeesBt.setPrefHeight(74.0);
         employeesBt.setPrefWidth(209.0);
         employeesBt.setStyle("-fx-font-size: 25;");
         employeesBt.setText("EMPLOYEES");
         employeesBt.setTextFill(Color.valueOf("#0d0d0d"));
-        //employeesBt.getStyleClass().add("buttonAdmin");
 
         financesBt.setLayoutX(-1.0);
         financesBt.setLayoutY(364.0);

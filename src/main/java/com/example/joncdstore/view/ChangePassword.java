@@ -123,7 +123,7 @@ public class ChangePassword implements ValidatePassword {
                     catch (Exception e) {
                         System.out.println(e.toString());
                     }
-                    userManager.addUser(userManager.getUserList());
+                    userManager.addUser();
                     window.close();
                 }
             }

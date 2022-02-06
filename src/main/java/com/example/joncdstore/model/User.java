@@ -1,10 +1,11 @@
 package com.example.joncdstore.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-public class User implements Serializable,Cloneable {
+public class User implements Serializable,Cloneable,CustomDate {
     private static final long serialVersionUID = -9219894574363813548L;
 
     private final UUID id;
@@ -18,8 +19,13 @@ public class User implements Serializable,Cloneable {
     private String phone;
     private String email;
     private double salary;
-    private Date employmentDate;
+    private String employmentDate;
+    private String profession;
 
+    public User() {
+        this.id = UUID.randomUUID();
+        this.employmentDate = formatDate(new Date());
+    }
     public User(String username,String password, int privilege,String name, String surname,String birthday,GENDER gender,String phone,String email,double salary) {
         this.id = UUID.randomUUID();
         this.username = username;
@@ -32,7 +38,8 @@ public class User implements Serializable,Cloneable {
         this.phone = phone;
         this.email = email;
         this.salary = salary;
-        this.employmentDate = new Date();
+        this.employmentDate = formatDate(new Date());
+        this.profession = formatPrivilege(this.privilege);
     }
 
     public UUID getId() {
@@ -79,8 +86,12 @@ public class User implements Serializable,Cloneable {
         return salary;
     }
 
-    public Date getEmploymentDate() {
+    public String getEmploymentDate() {
         return employmentDate;
+    }
+
+    public String getProfession() {
+        return profession;
     }
 
     @Override
@@ -97,8 +108,16 @@ public class User implements Serializable,Cloneable {
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", salary=" + salary +
-                ", employmentDate=" + employmentDate +
+                ", employmentDate='" + employmentDate + '\'' +
+                ", profession='" + profession + '\'' +
                 '}';
+    }
+
+
+    public String formatPrivilege(int p) {
+        if (p == 1) return "Admin";
+        else if (p == 2) return "Manager";
+        else return "Cashier";
     }
 
     @Override
@@ -107,10 +126,21 @@ public class User implements Serializable,Cloneable {
         return super.clone();
     }
 
+    @Override
+    public String formatDate(Date date) {
+        SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
+        return DateFor.format(date);
+        //u.setBirthday(DateFor.format(formatedDate));
+    }
+
     public String checkPrivilege() {
         if(privilege == 1) return "Admin";
         else if (privilege == 2) return "Manager";
         else return "Cashier";
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setPassword(String password) {
@@ -147,5 +177,9 @@ public class User implements Serializable,Cloneable {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 }

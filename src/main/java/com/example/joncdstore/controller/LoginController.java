@@ -26,9 +26,8 @@ public class LoginController {
             if(user != null)
             {
                 System.out.println("Logged in");
-                stage.close();
+                stage.setTitle("CD WORLD");
                 stage.setScene(createMainMenu(user,stage));
-                stage.show();
             }
         }
 
@@ -36,9 +35,8 @@ public class LoginController {
             System.out.println("Logged in");
             User adminUser = new User("admin","admin",1,"Admin","Admin","02/02/2022", GENDER.UNSPECIFIED,"0696969069",
                     "admin@epoka.edu.al",0);
-            stage.close();
-            stage.setScene(new MainMenuAdmin(adminUser,stage).createAdminScene()); //just for the moment until creating MainMenuAdmin
-            stage.show();
+            stage.setTitle("CD WORLD");
+            stage.setScene(new MainMenuAdmin(adminUser,stage).createAdminScene());
         }
         else {
             passwordField.setText("");

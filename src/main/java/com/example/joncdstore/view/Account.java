@@ -324,8 +324,7 @@ public class Account{
         employmentField.setLayoutX(194.0);
         employmentField.setLayoutY(141.0);
         employmentField.setStyle("-fx-font-size: 20;");
-        SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
-        employmentField.setText(DateFor.format(u.getEmploymentDate()));
+        employmentField.setText(u.getEmploymentDate());
         employmentField.setWrappingWidth(111.0);
 
 
