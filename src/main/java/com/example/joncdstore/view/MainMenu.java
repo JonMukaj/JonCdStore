@@ -62,15 +62,20 @@ public class MainMenu  {
         anchorPane.setPrefHeight(579.0);
         anchorPane.setPrefWidth(200.0);
 
-        billBt.setLayoutX(-1.0);
-        billBt.setOnAction(null);
+        billBt.setLayoutX(0);
+        billBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                MenuController.createBillNode(mainMenu,u,stage);
+            }
+        });
         billBt.setPrefHeight(74.0);
         billBt.setPrefWidth(209.0);
         billBt.setStyle("-fx-font-size: 25;");
         billBt.setText("BILL");
         billBt.setTextFill(Color.valueOf("#0d0d0d"));
 
-        performanceBt.setLayoutX(-1.0);
+        performanceBt.setLayoutX(0);
         performanceBt.setLayoutY(142.0);
         performanceBt.setOnAction(null);
         performanceBt.setPrefHeight(74.0);
@@ -79,7 +84,7 @@ public class MainMenu  {
         performanceBt.setText("PERFORMANCE");
         performanceBt.setTextFill(Color.valueOf("#0d0d0d"));
 
-        statisticsBt.setLayoutX(-1.0);
+        statisticsBt.setLayoutX(0);
         statisticsBt.setLayoutY(216.0);
         statisticsBt.setOnAction(null);
         statisticsBt.setPrefHeight(74.0);
@@ -88,7 +93,7 @@ public class MainMenu  {
         statisticsBt.setText("STATISTICS");
         statisticsBt.setTextFill(Color.valueOf("#0d0d0d"));
 
-        employeesBt.setLayoutX(-1.0);
+        employeesBt.setLayoutX(0);
         employeesBt.setLayoutY(290.0);
         employeesBt.setPrefHeight(74.0);
         employeesBt.setPrefWidth(209.0);
@@ -96,7 +101,7 @@ public class MainMenu  {
         employeesBt.setText("EMPLOYEES");
         employeesBt.setTextFill(Color.valueOf("#0d0d0d"));
 
-        financesBt.setLayoutX(-1.0);
+        financesBt.setLayoutX(0);
         financesBt.setLayoutY(364.0);
         financesBt.setOnAction(null);
         financesBt.setPrefHeight(74.0);
@@ -105,7 +110,7 @@ public class MainMenu  {
         financesBt.setText("FINANCES");
         financesBt.setTextFill(Color.valueOf("#0d0d0d"));
 
-        logisticsBt.setLayoutX(-1.0);
+        logisticsBt.setLayoutX(0);
         logisticsBt.setLayoutY(74.0);
         logisticsBt.setOnAction(null);
         logisticsBt.setPrefHeight(68.0);
@@ -114,7 +119,7 @@ public class MainMenu  {
         logisticsBt.setText("LOGISTICS");
         logisticsBt.setTextFill(Color.valueOf("#0d0d0d"));
 
-        accountBt.setLayoutX(-1.0);
+        accountBt.setLayoutX(0);
         accountBt.setLayoutY(438.0);
         accountBt.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -128,7 +133,7 @@ public class MainMenu  {
         accountBt.setText("ACCOUNT");
         accountBt.setTextFill(Color.valueOf("#0d0d0d"));
 
-        logoutBt.setLayoutX(-1.0);
+        logoutBt.setLayoutX(0);
         logoutBt.setLayoutY(511.0);
         logoutBt.setOnAction(new EventHandler<ActionEvent>() {
             @Override

@@ -11,6 +11,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.text.SimpleDateFormat;
@@ -188,7 +189,7 @@ public class Account{
         nameField.setLayoutY(37.0);
         nameField.setStyle("-fx-font-size: 20;");
         nameField.setText(u.getName() + " " + u.getSurname());
-        nameField.setWrappingWidth(128.0);
+        nameField.setWrappingWidth(200.0);
 
         birthdayField.setLayoutX(100.0);
         birthdayField.setLayoutY(86.0);
@@ -266,7 +267,7 @@ public class Account{
         usernameField.setLayoutY(37.0);
         usernameField.setStyle("-fx-font-size: 20;");
         usernameField.setText(u.getUsername());
-        usernameField.setWrappingWidth(81.0);
+        usernameField.setWrappingWidth(200.0);
 
         passwordField.setLayoutX(124.0);
         passwordField.setLayoutY(67.0);
@@ -368,7 +369,6 @@ public class Account{
         professionAnchor.getChildren().add(employmentField);
         professionBox.getChildren().add(professionAnchor);
         outerAnchor.getChildren().add(professionBox);
-
 
         scrollPane.setContent(outerAnchor);
         scrollPane.setHbarPolicy(javafx.scene.control.ScrollPane.ScrollBarPolicy.ALWAYS);

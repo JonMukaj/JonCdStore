@@ -22,6 +22,12 @@ public class User implements Serializable,Cloneable,CustomDate {
     private String employmentDate;
     private String profession;
 
+    private int nrOfCdSold;
+    private int nrOfCdBought;
+
+    private int nrOfBillSold;
+    private int nrOfBillBought;
+
     public User() {
         this.id = UUID.randomUUID();
         this.employmentDate = formatDate(new Date());
@@ -94,6 +100,25 @@ public class User implements Serializable,Cloneable,CustomDate {
         return profession;
     }
 
+    public int getNrOfCdSold() {
+        return nrOfCdSold;
+    }
+
+    public int getNrOfCdBought() {
+        return nrOfCdBought;
+    }
+
+
+    public int getNrOfBillSold() {
+        return nrOfBillSold;
+    }
+
+    public int getNrOfBillBought() {
+        return nrOfBillBought;
+    }
+
+
+
     @Override
     public String toString() {
         return "User{" +
@@ -130,7 +155,6 @@ public class User implements Serializable,Cloneable,CustomDate {
     public String formatDate(Date date) {
         SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
         return DateFor.format(date);
-        //u.setBirthday(DateFor.format(formatedDate));
     }
 
     public String checkPrivilege() {
@@ -182,4 +206,21 @@ public class User implements Serializable,Cloneable,CustomDate {
     public void setProfession(String profession) {
         this.profession = profession;
     }
+
+    public void setNrOfCdSold(int nrOfCdSold) {
+        this.nrOfCdSold = nrOfCdSold;
+    }
+
+    public void setNrOfCdBought(int nrOfCdBought) {
+        this.nrOfCdBought = nrOfCdBought;
+    }
+
+    public void setNrOfBillSold(int nrOfBillSold) {
+        this.nrOfBillSold = nrOfBillSold;
+    }
+
+    public void setNrOfBillBought(int nrOfBillBought) {
+        this.nrOfBillBought = nrOfBillBought;
+    }
+
 }

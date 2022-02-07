@@ -14,6 +14,10 @@ import java.io.File;
 
 public class LoginController {
 
+    private LoginController() {
+
+    }
+
     public static void authenticateUser(TextField usernameField, PasswordField passwordField, Text errorText, Stage stage) {
         String username = usernameField.getText();
         String password = passwordField.getText();
@@ -30,7 +34,15 @@ public class LoginController {
                 stage.setScene(createMainMenu(user,stage));
             }
         }
-
+        else
+        {
+            UserManager userManager = new UserManager();
+            User adminUser = new User("admin","admin",1,"Admin","Admin","02/02/2022", GENDER.UNSPECIFIED,"0696969069",
+                    "admin@epoka.edu.al",0);
+            userManager.readUser();
+            userManager.getUserList().add(adminUser);
+            userManager.addUser();
+        }
         if(username.equals("admin") && password.equals("admin")) {
             System.out.println("Logged in");
             User adminUser = new User("admin","admin",1,"Admin","Admin","02/02/2022", GENDER.UNSPECIFIED,"0696969069",

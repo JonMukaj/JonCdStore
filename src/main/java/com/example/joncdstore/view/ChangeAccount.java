@@ -350,7 +350,7 @@ public class ChangeAccount {
         usernameField.setLayoutY(37.0);
         usernameField.setStyle("-fx-font-size: 20;");
         usernameField.setText(u.getUsername());
-        usernameField.setWrappingWidth(81.0);
+        usernameField.setWrappingWidth(200.0);
 
         passwordField.setLayoutX(124.0);
         passwordField.setLayoutY(67.0);

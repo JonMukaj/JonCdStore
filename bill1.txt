@@ -1,0 +1,6 @@
+Bill Nr.1
+Date: Mon Feb 07 02:11:55 CET 2022
+Type: Sell
+---------------------List of items---------------------
+American Pie Comedy Blizzard 40.0
+Total: 120.0

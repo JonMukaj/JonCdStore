@@ -19,6 +19,9 @@ import javafx.stage.Stage;
 
 
 public class EmployeeController {
+    private EmployeeController() {
+
+    }
     public static void returnMain(User u, Stage stage) {
         stage.setTitle("CD WORLD");
         stage.setScene(LoginController.createMainMenu(u,stage));

@@ -1,21 +1,23 @@
 package com.example.joncdstore.model;
 
-import com.example.joncdstore.model.CD;
-
 import java.io.*;
 import java.util.*;
 
+
 public class CdManager implements Serializable {
 
-    private ArrayList<CD> cdList;
+    private static final long serialVersionUID = 5847752050191274623L;
 
-    public CdManager() {
+    private ArrayList<CD> cdList = new ArrayList<>();;
+    private String type;
+
+    public CdManager(String type) {
+        this.type = type;
     }
 
-    public void addCd(ArrayList<CD> c) {
+    public void addCd() {
         try {
-            cdList = c;
-            FileOutputStream f1 = new FileOutputStream("cd.ser",true);
+            FileOutputStream f1 = new FileOutputStream("cd.ser");
             BufferedOutputStream f2 = new BufferedOutputStream(f1);
             ObjectOutputStream outObject = new ObjectOutputStream(f2);
 
@@ -41,9 +43,9 @@ public class CdManager implements Serializable {
             f2.close();
             inObject.close();
 
-            for (CD c : cdList) {
-                System.out.println(c.toString());
-            }
+            /*for (CD c : cdList) {
+                System.out.println(c.toString(type));
+            }*/
 
 
         } catch (ClassNotFoundException i) {
@@ -90,7 +92,7 @@ public class CdManager implements Serializable {
             numberOfCD = 0;
             for (CD j : cdList) {
                 if (Objects.equals(i, j.getGenre())) {
-                    numberOfCD += j.getQuantityOfCD();
+                    numberOfCD += j.getTotalQuantity();
                 }
             }
             System.out.println(numberOfCD);
@@ -98,5 +100,43 @@ public class CdManager implements Serializable {
         }
         System.out.println(genreMap);
         return genreMap;
+    }
+
+    public String showCD() {
+        String text = "";
+        for(CD i : cdList) {
+            text += i.toString(type);
+        }
+        return text;
+    }
+
+    public int checkCD(String cdTitle) {
+        int idx = 0;
+        for(CD i : cdList) {
+            if (i.getTitleOfCd().equals(cdTitle)) {
+                System.out.println("CD FOUND!");
+                return idx;
+            }
+            idx++;
+        }
+        idx = -1;
+        return idx;
+    }
+
+    public boolean searchCD(int idx) {
+        if (cdList.get(idx).getTotalQuantity() > 0) {
+            System.out.println("CD in stock!");
+            return true;
+        }
+        return false;
+    }
+
+
+    public ArrayList<CD> getCdList() {
+        return cdList;
+    }
+
+    public void setCdList(ArrayList<CD> cdList) {
+        this.cdList = cdList;
     }
 }

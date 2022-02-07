@@ -4,20 +4,23 @@ import java.io.*;
 
 public class CD implements Serializable {
 
-    private String titleOfCd;
-    private String genre;
-    private String author;
-    private double purchasedPrice;
-    private double sellingPrice;
-    private static int quantityOfCD;
+    private static final long serialVersionUID = -8845236125637035006L;
 
-    public CD(String titleOfCd, String genre, String author,double purchasedPrice,double sellingPrice,int quantityOfCD) {
+    private final String titleOfCd;
+    private final String genre;
+    private final String author;
+    private final double purchasedPrice;
+    private double sellingPrice;
+    private int totalQuantity;
+    private int tmpQuantity;
+
+    public CD(String titleOfCd, String genre, String author,double purchasedPrice,double sellingPrice,int quantity) {
         this.titleOfCd = titleOfCd;
         this.genre = genre;
         this.author = author;
         this.purchasedPrice = purchasedPrice;
         this.sellingPrice = sellingPrice;
-        this.quantityOfCD += quantityOfCD;
+        this.totalQuantity = quantity;
     }
 
     //getters
@@ -41,24 +44,34 @@ public class CD implements Serializable {
         return sellingPrice;
     }
 
-    public int getQuantityOfCD() {
-        return quantityOfCD;
+    public int getTotalQuantity() {
+        return totalQuantity;
     }
 
-    //setters
+    public int getTmpQuantity() {
+        return tmpQuantity;
+    }
+//setters
 
     public void setSellingPrice(double sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
 
-    @Override
-    public String toString() {
-        return "CD{" +
-                "titleOfCd='" + titleOfCd + '\'' +
-                ", genre='" + genre + '\'' +
-                ", author='" + author + '\'' +
-                ", purchasedPrice=" + purchasedPrice +
-                ", sellingPrice=" + sellingPrice +
-                '}';
+    public void setTotalQuantity(int totalQuantity) {
+        this.totalQuantity = totalQuantity;
+    }
+
+    public void setTmpQuantity(int tmpQuantity) {
+        this.tmpQuantity = tmpQuantity;
+    }
+
+    public String toString(String type) {
+        if (type.equals("Purchase")) {
+            return titleOfCd + " " + genre + " " + author + " " + Math.abs(purchasedPrice) + "\n";
+        }
+        else if (type.equals("Sell")){
+            return titleOfCd + " " + genre + " " + author + " " + sellingPrice + "\n";
+        }
+        return "";
     }
 }

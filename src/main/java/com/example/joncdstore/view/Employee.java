@@ -68,40 +68,31 @@ public class Employee {
         userNameC.setText("Username");
 
         nameC.setPrefWidth(69.0);
-        nameC.setStyle("ba: #EB99A0;");
         nameC.setText("Name");
 
         surnameC.setPrefWidth(81.0);
-        surnameC.setStyle("ba: #EB99A0;");
         surnameC.setText("Surname");
 
         birthdayC.setPrefWidth(79.0);
-        birthdayC.setStyle("ba: #EB99A0;");
         birthdayC.setText("Birthday");
 
         genderC.setPrefWidth(53.0);
-        genderC.setStyle("ba: #EB99A0;");
         genderC.setText("Gender");
 
         phoneC.setPrefWidth(77.0);
-        phoneC.setStyle("ba: #EB99A0;");
         phoneC.setText("Phone");
 
         emailC.setPrefWidth(143.0);
-        emailC.setStyle("ba: #EB99A0;");
         emailC.setText("Email Address");
 
         salaryC.setPrefWidth(48.0);
-        salaryC.setStyle("ba: #EB99A0;");
         salaryC.setText("Salary");
 
         employDateC.setPrefWidth(85.0);
-        employDateC.setStyle("ba: #EB99A0;");
         employDateC.setText("RegDate");
 
         privilegeC.setPrefWidth(77.0);
         privilegeC.setText("Role");
-        scrollPane.setContent(employTable);
 
         addBt.setLayoutX(543.0);
         addBt.setLayoutY(15.0);
@@ -165,6 +156,7 @@ public class Employee {
         returnBt.getStyleClass().add("edit");
         returnBt.setText("Return");
 
+        scrollPane.setContent(employTable);
 
         userNameC.setCellValueFactory(new PropertyValueFactory<>("username"));
         nameC.setCellValueFactory(new PropertyValueFactory<>("name"));

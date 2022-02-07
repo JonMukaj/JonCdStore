@@ -22,6 +22,10 @@ import java.util.ArrayList;
 
 public class AccountController {
 
+    private AccountController() {
+
+    }
+
     public static void cancelChanges(AnchorPane mainMenu, User u) {
         mainMenu.getChildren().add(new Account(mainMenu,u).getScrollPane());
     }

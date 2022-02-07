@@ -7,11 +7,10 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class UserManager implements Serializable {
-    private static final long serialVersionUID = 552968509826775790L;
-    private ArrayList<User> userList;
+
+    private ArrayList<User> userList = new ArrayList<>();;
 
     public UserManager () {
-        //readUser();
     }
 
     public void addUser() {
@@ -64,6 +63,6 @@ public class UserManager implements Serializable {
     }
 
     public ArrayList<User> getUserList() {
-        return userList;
+            return userList;
     }
 }

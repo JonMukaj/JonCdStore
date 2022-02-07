@@ -2,10 +2,7 @@ package com.example.joncdstore.controller;
 
 import com.example.joncdstore.App;
 import com.example.joncdstore.model.User;
-import com.example.joncdstore.view.Account;
-import com.example.joncdstore.view.ChangeAccount;
-import com.example.joncdstore.view.Employee;
-import com.example.joncdstore.view.Login;
+import com.example.joncdstore.view.*;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,6 +15,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MenuController {
+
+    private MenuController() {
+
+    }
 
     public static void logOut(Stage stage) {
         Stage window = new Stage();
@@ -71,6 +72,9 @@ public class MenuController {
         stage.setScene(new Employee(u,stage).generateEmployeeScene());
     }
 
+    public static void createBillNode(AnchorPane mainMenu, User u, Stage stage) {
+        mainMenu.getChildren().add(new BillMenu(u,stage).getAnchorPane());
+    }
 
 
 }
