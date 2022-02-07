@@ -3,7 +3,6 @@ package com.example.joncdstore.view;
 import com.example.joncdstore.controller.BillController;
 import com.example.joncdstore.controller.LogisticsController;
 import com.example.joncdstore.model.CD;
-import com.example.joncdstore.model.CdManager;
 import com.example.joncdstore.model.User;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -127,7 +126,7 @@ public class SupplyView  {
         findBt.setText("Find");
 
 
-        removeBt.setLayoutX(279.0);
+        removeBt.setLayoutX(47.0);
         removeBt.setLayoutY(534.0);
         removeBt.setPrefHeight(25.0);
         removeBt.setPrefWidth(66.0);

@@ -1,5 +1,6 @@
 package com.example.joncdstore.controller;
 
+import com.example.joncdstore.model.CdManager;
 import com.example.joncdstore.model.GENDER;
 import com.example.joncdstore.model.User;
 import com.example.joncdstore.model.UserManager;
@@ -29,9 +30,17 @@ public class LoginController {
             User user = userManager.checkUser(username,password);
             if(user != null)
             {
-                System.out.println("Logged in");
+                //System.out.println("Logged in");
                 stage.setTitle("CD WORLD");
-                stage.setScene(createMainMenu(user,stage));
+                Scene scene = createMainMenu(user,stage);
+                stage.setScene(scene);
+                if (user.getPrivilege() == 2) {
+                    CdManager cdManager = new CdManager("Purchase");
+                    cdManager.readCD();
+                    cdManager.checkQuantity(user,stage,new MainMenuManager(user,stage).getMainMenu());
+
+                }
+
             }
         }
         else

@@ -48,16 +48,21 @@ public abstract class Bill implements CustomDate{
         CdManager cdManager = new CdManager(type);
         cdManager.setCdList(items);
 
-        int nrOfCD = 0;
+        int nrOfCDsold = 0;
         for(CD i : cdManager.getCdList()) {
-            nrOfCD += i.getTmpQuantity();
+            nrOfCDsold += i.getTmpQuantity();
+        }
+
+        int nrOfCDbought = 0;
+        for(CD i : cdManager.getCdList()) {
+            nrOfCDbought += i.getTotalQuantity();
         }
 
         String price = "Total: " + priceOfTransaction + "\n";
 
         if (type.equals("Purchase")) {
             u.setNrOfBillBought(u.getNrOfBillBought() + 1);
-            Statistics.setTotalNrOfCdBought(Statistics.getTotalNrOfCdBought() + nrOfCD);
+            Statistics.setTotalNrOfCdBought(Statistics.getTotalNrOfCdBought() + nrOfCDbought);
             Statistics.setTotalNrOfBillBought(Statistics.getTotalNrOfBillBought() + 1);
             String tmp = String.format("%.2f",priceOfTransaction);
 
@@ -66,14 +71,14 @@ public abstract class Bill implements CustomDate{
 
         else {
             u.setNrOfBillSold(u.getNrOfBillSold() + 1);
-            Statistics.setTotalNrOfCdSold(Statistics.getTotalNrOfCdSold()+ nrOfCD);
+            Statistics.setTotalNrOfCdSold(Statistics.getTotalNrOfCdSold()+ nrOfCDsold);
             Statistics.setTotalNrOfBillSold(Statistics.getTotalNrOfBillSold() + 1);
             String tmp = String.format("%.2f",priceOfTransaction);
             Statistics.setRevenue(Statistics.getRevenue() + Double.parseDouble(tmp));
         }
 
-        System.out.println(u.getNrOfCdBought());
-        System.out.println(u.getNrOfBillBought());
+        //System.out.println(u.getNrOfCdBought());
+        //System.out.println(u.getNrOfBillBought());
         return text + cdManager.showCD() + "\n" + price;
     }
 

@@ -61,22 +61,37 @@ public class LogisticsController {
 
     }
 
+    public static void removeFromStock(TableView<CD> t) {
+        CdManager cdManager = new CdManager("Purchase");
+        cdManager.readCD();
+
+        Iterator<CD> i = cdManager.getCdList().iterator();
+        while(i.hasNext()) {
+            CD c = i.next();
+            if (c.getTitleOfCd().equals(t.getSelectionModel().getSelectedItem().getTitleOfCd())) {
+                i.remove();
+            }
+        }
+        cdManager.addCd();
+        t.getItems().remove(t.getSelectionModel().getSelectedItem());
+    }
+
+
     public static void generateBillPurchase(User u) {
         CdManager cdManager = new CdManager("Purchase");
         cdManager.readCD();
 
-        for(CD i : cdManager.getCdList()) {
-            for(CD j : tmpCDlist) {
-                if(i.getTitleOfCd().matches(j.getTitleOfCd())) {
-                    i.setTotalQuantity(j.getTotalQuantity());
-                    u.setNrOfCdBought(u.getNrOfCdBought() + j.getTmpQuantity());
-                }
-            }
+        for(CD i : tmpCDlist) {
+            u.setNrOfCdBought(u.getNrOfCdBought() + i.getTotalQuantity());
         }
+
+        cdManager.getCdList().addAll(tmpCDlist);
+
         cdManager.addCd();
         Bill b = new BillPurchase(SupplyView.getPrice(),tmpCDlist);
         BillManager billManager = new BillManager();
         billManager.createBill(b,u);
+        System.out.println(u.getNrOfBillBought() + " " + u.getNrOfCdBought());
     }
 
     public static ArrayList<CD> getTmpCDlist() {
@@ -97,4 +112,6 @@ public class LogisticsController {
         window.setScene(scene);
         window.showAndWait();
     }
+
+
 }

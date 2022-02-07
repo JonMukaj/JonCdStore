@@ -15,11 +15,15 @@ public class CD implements Serializable {
     private int tmpQuantity;
 
     public CD(String titleOfCd, String genre, String author,double purchasedPrice,double sellingPrice,int quantity) {
+        String tmp;
         this.titleOfCd = titleOfCd;
         this.genre = genre;
         this.author = author;
-        this.purchasedPrice = purchasedPrice;
-        this.sellingPrice = sellingPrice;
+        tmp = String.format("%.2f",purchasedPrice);
+        this.purchasedPrice = Double.parseDouble(tmp);
+
+        tmp = String.format("%.2f",sellingPrice);
+        this.sellingPrice = Double.parseDouble(tmp);
         this.totalQuantity = quantity;
     }
 
@@ -58,6 +62,14 @@ public class CD implements Serializable {
 
     public void setTmpQuantity(int tmpQuantity) {
         this.tmpQuantity = tmpQuantity;
+    }
+
+    public void setPurchasedPrice(double purchasedPrice) {
+        this.purchasedPrice = purchasedPrice;
+    }
+
+    public void setSellingPrice(double sellingPrice) {
+        this.sellingPrice = sellingPrice;
     }
 
     public String toString(String type) {

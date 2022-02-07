@@ -58,6 +58,18 @@ public class MenuController {
         window.showAndWait();
     }
 
+    public static void warningForStock(Stage stage,String genre,int size) {
+        Stage window = new Stage();
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("Warning");
+        window.setResizable(false);
+        window.getIcons().add(new Image(App.class.getResourceAsStream("img/icon.jpg")));
+        Scene scene = new Scene(new WarningStock(window,genre,size).getAnchorPane(),404,136);
+        window.setScene(scene);
+        window.showAndWait();
+    }
+
+
     public static void createAccountNode(AnchorPane mainMenu, User u) {
         mainMenu.getChildren().add(new Account(mainMenu,u).getScrollPane());
     }

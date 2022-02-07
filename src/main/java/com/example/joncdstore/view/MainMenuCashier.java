@@ -49,7 +49,7 @@ public class MainMenuCashier extends MainMenu{
 
         Name.setStyle("-fx-font-family: 'Brush Script MT'; -fx-fill: #55FD00; -fx-font-size: 50;");
 
-
+        smallMenu.setStyle("-fx-background-color: #A7EF9F;");
 
 
         mainMenu.getChildren().add(Name);
@@ -61,6 +61,7 @@ public class MainMenuCashier extends MainMenu{
         anchorPane.getChildren().add(logisticsBt);
         anchorPane.getChildren().add(accountBt);
         anchorPane.getChildren().add(logoutBt);
+        mainMenu.getChildren().add(smallMenu);
         mainMenu.getChildren().add(anchorPane);
         mainMenu.getChildren().add(tabPane);
         mainMenu.getChildren().add(UserType);

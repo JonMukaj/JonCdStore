@@ -44,6 +44,12 @@ public class Statistics {
         try {
             File f1 = new File("statistics.txt");
             PrintWriter f2 = new PrintWriter(f1);
+            String tmp = String.format("%.2f",revenue);
+            Statistics.revenue = Double.parseDouble(tmp);
+
+            tmp = String.format("%.2f",cost);
+            Statistics.cost = Double.parseDouble(tmp);
+
             f2.write(totalNrOfCdSold + " ");
             f2.write(totalNrOfCdBought + " ");
             f2.write(totalNrOfBillSold + " ");

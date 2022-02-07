@@ -4,6 +4,7 @@ import com.example.joncdstore.controller.BillController;
 import com.example.joncdstore.controller.LogisticsController;
 import com.example.joncdstore.model.CD;
 import com.example.joncdstore.model.User;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -29,6 +30,7 @@ public class Catalogue {
     private final Button buyBt;
     private final Button sellBt;
     private final Button refreshBt;
+    private final Button removeBt;
 
     public Catalogue(User u, Stage stage, String s,Scene oldScene) {
 
@@ -44,6 +46,7 @@ public class Catalogue {
         buyBt = new Button();
         sellBt = new Button();
         refreshBt = new Button();
+        removeBt = new Button();
 
         anchorPane.getStylesheets().add(this.getClass().getResource("/Menu.css").toExternalForm());
 
@@ -79,8 +82,24 @@ public class Catalogue {
         });
         returnBt.setPrefHeight(25.0);
         returnBt.setPrefWidth(66.0);
-        returnBt.getStyleClass().add("remove");
+        returnBt.getStyleClass().add("edit");
         returnBt.setText("Return");
+
+        removeBt.setLayoutX(187.0);
+        removeBt.setLayoutY(15);
+        removeBt.setPrefHeight(25.0);
+        removeBt.setPrefWidth(66.0);
+        removeBt.getStyleClass().add("remove");
+        removeBt.setText("Remove");
+        removeBt.setVisible(true);
+        removeBt.disableProperty().bind(Bindings.isEmpty(cdTable.getSelectionModel().getSelectedItems()));
+        removeBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                LogisticsController.removeFromStock(cdTable);
+                cdTable.getSelectionModel().clearSelection();
+            }
+        });
 
         buyBt.setLayoutX(101.0);
         buyBt.setLayoutY(15.0);
@@ -131,10 +150,12 @@ public class Catalogue {
             buyBt.setVisible(false);
             sellBt.setVisible(false);
             refreshBt.setVisible(false);
+            removeBt.setVisible(false);
         }
 
         if (s.equals("sellingPrice")) {
             buyBt.setVisible(false);
+            removeBt.setVisible(false);
         }
         else {
             sellBt.setVisible(false);
@@ -159,11 +180,13 @@ public class Catalogue {
 
         anchorPane.setPrefHeight(573.0);
         anchorPane.setPrefWidth(793.0);
+
         anchorPane.getChildren().add(scrollPane);
         anchorPane.getChildren().add(returnBt);
         anchorPane.getChildren().add(buyBt);
         anchorPane.getChildren().add(sellBt);
         anchorPane.getChildren().add(refreshBt);
+        anchorPane.getChildren().add(removeBt);
 
     }
 

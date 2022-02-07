@@ -47,7 +47,7 @@ public class AccountController {
             userManager.getUserList().set(idx,(User) u.clone());
         }
         catch (Exception e) {
-            System.out.println(e.toString());
+            //System.out.println();
         }
 
         /*System.out.println("Cloned object");

@@ -199,8 +199,4 @@ public class Employee {
     }
 
 
-    /*protected abstract void addEmployee(javafx.event.ActionEvent actionEvent);
-
-    protected abstract void removeEmployee(javafx.event.ActionEvent actionEvent);*/
-
 }

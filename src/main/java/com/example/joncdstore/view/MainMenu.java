@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 public class MainMenu  {
 
     protected AnchorPane mainMenu;
+    protected AnchorPane smallMenu;
     protected Text Name;
     protected AnchorPane anchorPane;
     protected Button billBt;
@@ -34,6 +35,7 @@ public class MainMenu  {
         this.stage = stage;
 
         mainMenu = new AnchorPane();
+        smallMenu = new AnchorPane();
         Name = new Text();
         anchorPane = new AnchorPane();
         billBt = new Button();
@@ -49,6 +51,11 @@ public class MainMenu  {
         mainMenu.setPrefHeight(700.0);
         mainMenu.setPrefWidth(1001.0);
         mainMenu.getStylesheets().add(this.getClass().getResource("/Menu.css").toExternalForm());
+
+        smallMenu.setLayoutX(235.0);
+        smallMenu.setLayoutY(110.0);
+        smallMenu.setPrefHeight(573);
+        smallMenu.setPrefWidth(729);
 
         Name.setLayoutX(33.0);
         Name.setLayoutY(67.0);

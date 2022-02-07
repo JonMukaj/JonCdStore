@@ -8,16 +8,17 @@ import java.util.ArrayList;
 public class test {
     public static void main(String [] args)  {
 
-        CD cdTest1 = new CD("COD Vanguard","Action","Activision",59.9,65.5,5);
+        /*CD cdTest1 = new CD("COD Vanguard","Action","Activision",59.9,65.5,5);
         CD cdTest2 = new CD("American Pie","Comedy","Blizzard",35,40,10);
-        CD cdTest3 = new CD("BF4","Drama","EA",89,92,20);
+        CD cdTest3 = new CD("BF4","Drama","EA",89,92,20);*/
 
         CdManager cdManager = new CdManager("Purchase");
-        cdManager.getCdList().add(cdTest1);
+        /*cdManager.getCdList().add(cdTest1);
         cdManager.getCdList().add(cdTest2);
-        cdManager.getCdList().add(cdTest3);
+        cdManager.getCdList().add(cdTest3);*/
 
-        cdManager.addCd();
+        //cdManager.addCd();
+        cdManager.readCD();
 
         double [] randomValue = new double[5];
         for(int i = 0; i < 5; i++) {
@@ -30,6 +31,7 @@ public class test {
             randomValue[i] *= 1.1;
             System.out.println(String.format("%.2f",randomValue[i]));
         }
+
 
         /*
         double price = 0;

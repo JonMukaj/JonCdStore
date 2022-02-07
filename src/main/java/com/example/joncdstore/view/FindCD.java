@@ -251,10 +251,5 @@ public class FindCD {
         return anchorPane;
     }
 
-    /*protected abstract void addToCart(javafx.event.ActionEvent actionEvent);
-
-    protected abstract void cancel(javafx.event.ActionEvent actionEvent);
-
-    protected abstract void createCD(javafx.event.ActionEvent actionEvent);*/
 
 }

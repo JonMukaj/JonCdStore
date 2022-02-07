@@ -1,5 +1,9 @@
 package com.example.joncdstore.model;
 
+import com.example.joncdstore.controller.MenuController;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
 import java.io.*;
 import java.util.*;
 
@@ -56,7 +60,7 @@ public class CdManager implements Serializable {
     }
 
 
-    public void checkQuantity() {
+    public void checkQuantity(User u,Stage stage, AnchorPane anchorPane) {
 
         final int minQuantity = 5;
         readCD();
@@ -70,7 +74,8 @@ public class CdManager implements Serializable {
             Map.Entry<String, Integer> pair = it.next();
 
             if (pair.getValue() < minQuantity) {
-                System.out.println("Warning! Genre \"" + pair.getKey() + "\" will soon be out of stock");
+                MenuController.warningForStock(stage, pair.getKey(), pair.getValue());
+                //System.out.println("Warning! Genre \"" + pair.getKey() + "\" will soon be out of stock");
             }
         }
 
@@ -95,10 +100,10 @@ public class CdManager implements Serializable {
                     numberOfCD += j.getTotalQuantity();
                 }
             }
-            System.out.println(numberOfCD);
+            //System.out.println(numberOfCD);
             genreMap.put(i, numberOfCD);
         }
-        System.out.println(genreMap);
+        //System.out.println(genreMap);
         return genreMap;
     }
 

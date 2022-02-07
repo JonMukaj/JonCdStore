@@ -99,6 +99,8 @@ public class BillController {
         Bill b = new BillSell(BillView.getPrice(),tmpCDlist);
         BillManager billManager = new BillManager();
         billManager.createBill(b,u);
+
+        System.out.println(u.getNrOfBillSold() + " " + u.getNrOfCdSold());
     }
 
 

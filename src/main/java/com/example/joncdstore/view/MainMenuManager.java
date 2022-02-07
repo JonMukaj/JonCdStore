@@ -1,5 +1,6 @@
 package com.example.joncdstore.view;
 
+import com.example.joncdstore.model.CdManager;
 import com.example.joncdstore.model.User;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
@@ -45,7 +46,10 @@ public class MainMenuManager extends MainMenu{
 
         Name.setStyle("-fx-font-family: 'Brush Script MT'; -fx-fill: #00f5fd; -fx-font-size: 50;");
 
+        smallMenu.setStyle("-fx-background-color: #85C9F0;");
+
         mainMenu.getChildren().add(Name);
+        mainMenu.getChildren().add(smallMenu);
         anchorPane.getChildren().add(billBt);
         anchorPane.getChildren().add(performanceBt);
         anchorPane.getChildren().add(statisticsBt);
@@ -65,4 +69,6 @@ public class MainMenuManager extends MainMenu{
         Scene scene = new Scene(mainMenu, 1000, 700);
         return scene;
     }
+
+
 }
