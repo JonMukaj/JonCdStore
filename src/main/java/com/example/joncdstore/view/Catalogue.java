@@ -27,8 +27,9 @@ public class Catalogue {
     private final Button returnBt;
     private final Button buyBt;
     private final Button sellBt;
+    private final Button refreshBt;
 
-    public Catalogue(User u, Stage stage, ActionEvent e,Scene oldScene) {
+    public Catalogue(User u, Stage stage, String s,Scene oldScene) {
 
         anchorPane = new AnchorPane();
         scrollPane = new ScrollPane();
@@ -41,6 +42,7 @@ public class Catalogue {
         returnBt = new Button();
         buyBt = new Button();
         sellBt = new Button();
+        refreshBt = new Button();
 
         anchorPane.getStylesheets().add(this.getClass().getResource("/Menu.css").toExternalForm());
 
@@ -87,6 +89,24 @@ public class Catalogue {
         buyBt.getStyleClass().add("add");
         buyBt.setText("Buy");
 
+        refreshBt.setLayoutX(692.0);
+        refreshBt.setLayoutY(15.0);
+        refreshBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    generateCatalogueScene(s);
+                }
+                catch (IllegalArgumentException e) {
+
+                }
+            }
+        });
+        refreshBt.setPrefHeight(25.0);
+        refreshBt.setPrefWidth(66.0);
+        refreshBt.getStyleClass().add("edit");
+        refreshBt.setText("Refresh");
+
 
         sellBt.setLayoutX(101.0);
         sellBt.setLayoutY(15.0);
@@ -101,13 +121,13 @@ public class Catalogue {
         sellBt.getStyleClass().add("add");
         sellBt.setText("Sell");
 
-        if (u.getUsername().equals("admin")){
+        if (u.getPrivilege() == 1){
             buyBt.setVisible(false);
             sellBt.setVisible(false);
+            refreshBt.setVisible(false);
         }
 
-        String text = ((Button)e.getSource()).getText();
-        if (text.equals("CATALOGUE")) {
+        if (s.equals("sellingPrice")) {
             buyBt.setVisible(false);
         }
         else {
@@ -120,11 +140,8 @@ public class Catalogue {
         genreC.setCellValueFactory(new PropertyValueFactory<>("genre"));
         authorC.setCellValueFactory(new PropertyValueFactory<>("author"));
 
-        String t = ((Button)e.getSource()).getText();
-        if (t.equals("CATALOGUE")) {
-            priceC.setCellValueFactory(new PropertyValueFactory<>("sellingPrice"));
-        }
-        else priceC.setCellValueFactory(new PropertyValueFactory<>("purchasedPrice"));
+
+        priceC.setCellValueFactory(new PropertyValueFactory<>(s));
 
         quantityC.setCellValueFactory(new PropertyValueFactory<>("totalQuantity"));
 
@@ -140,6 +157,7 @@ public class Catalogue {
         anchorPane.getChildren().add(returnBt);
         anchorPane.getChildren().add(buyBt);
         anchorPane.getChildren().add(sellBt);
+        anchorPane.getChildren().add(refreshBt);
 
     }
 
@@ -147,18 +165,19 @@ public class Catalogue {
         return anchorPane;
     }
 
-    public Scene generateCatalogueScene (ActionEvent e) {
-        String text = ((Button)e.getSource()).getText();
-        String type;
-        if (text.equals("CATALOGUE")) {
-            type = "Sell";
-        }
-        else {
-            type = "Purchase";
-        }
+    public Scene generateCatalogueScene (String s){
 
-        BillController.updateTable(cdTable,type);
-        return new Scene(anchorPane, 793, 573);
+            String type;
+            if (s.equals("sellingPrice")) {
+                type = "Sell";
+            }
+            else {
+                type = "Purchase";
+            }
+
+            BillController.updateTable(cdTable,type);
+            return new Scene(anchorPane, 793, 573);
+
     }
 
 }

@@ -55,23 +55,17 @@ public class BillMenu{
         catalogueBt.setText("CATALOGUE");
 
 
-        if (u.getPrivilege() == 1){
-            anchorPane.setStyle("-fx-background-color: #DB8C89;");
-            sellBt.getStyleClass().add("buttonAdmin");
-            catalogueBt.getStyleClass().add("buttonAdmin");
-            sellBt.setTextFill(Color.valueOf("#5C0000"));
-            catalogueBt.setTextFill(Color.valueOf("#5C0000"));
-        }
-        else
-        {
+        if (u.getPrivilege() == 3){
             anchorPane.setStyle("-fx-background-color: #A7EF9F;");
             sellBt.getStyleClass().add("buttonCashier");
             catalogueBt.getStyleClass().add("buttonCashier");
             sellBt.setTextFill(Color.GREEN);
             catalogueBt.setTextFill(Color.GREEN);
         }
-
-        if (u.getUsername().equals("admin")) {
+        else {
+            anchorPane.setStyle("-fx-background-color: #DB8C89;");
+            catalogueBt.getStyleClass().add("buttonAdmin");
+            catalogueBt.setTextFill(Color.valueOf("#5C0000"));
             sellBt.setOnAction(null);
             sellBt.getStyleClass().add("inactiveAdmin");
         }

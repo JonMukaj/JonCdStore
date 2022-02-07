@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -29,9 +30,18 @@ public class BillController {
     }
 
     public static void createCatalogueScene(User u, Stage stage, ActionEvent e) {
-        stage.setTitle("Catalogue");
-        Scene oldScene = stage.getScene();
-        stage.setScene(new Catalogue(u,stage,e,oldScene).generateCatalogueScene(e));
+        String t = ((Button)e.getSource()).getText();
+        if (t.equals("CATALOGUE")) {
+            stage.setTitle("Catalogue");
+            Scene oldScene = stage.getScene();
+            stage.setScene(new Catalogue(u,stage,"sellingPrice",oldScene).generateCatalogueScene("sellingPrice"));
+        }
+        else if (t.equals("SUPPLY")) {
+            stage.setTitle("Supply");
+            Scene oldScene = stage.getScene();
+            stage.setScene(new Catalogue(u,stage,"purchasedPrice",oldScene).generateCatalogueScene("purchasedPrice"));
+        }
+
     }
 
     public static void returnBill(User u, Stage stage,Scene oldScene) {
@@ -75,19 +85,21 @@ public class BillController {
 
     }
 
-    public static void generateBillSell() {
+    public static void generateBillSell(User u) {
         CdManager cdManager = new CdManager("Sell");
         cdManager.readCD();
         for(CD i : cdManager.getCdList()) {
             for(CD j : tmpCDlist) {
                 if(i.getTitleOfCd().matches(j.getTitleOfCd())) {
                     i.setTotalQuantity(j.getTotalQuantity());
+
                 }
             }
         }
+        cdManager.addCd();
         Bill b = new BillSell(BillView.getPrice(),tmpCDlist);
         BillManager billManager = new BillManager();
-        billManager.createBill(b);
+        billManager.createBill(b,u.getName()+ " " + u.getSurname());
     }
 
 

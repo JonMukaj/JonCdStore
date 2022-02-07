@@ -4,6 +4,7 @@ import com.example.joncdstore.controller.BillController;
 import com.example.joncdstore.model.CD;
 import com.example.joncdstore.model.CdManager;
 import com.example.joncdstore.model.User;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -30,6 +31,7 @@ public class BillView  {
     private final Button removeBt;
     private final Button createBillBt;
     private final Text errText;
+    private final Text generateText;
     private final Label priceLabel;
     private final Text priceText;
     private final Spinner<Integer> spinner;
@@ -61,6 +63,7 @@ public class BillView  {
         priceText = new Text();
         spinner = new Spinner<>();
         quantityLabel = new Label();
+        generateText = new Text();
 
 
         anchorPane.getStylesheets().add(this.getClass().getResource("/Menu.css").toExternalForm());
@@ -98,6 +101,7 @@ public class BillView  {
                 BillController.getTmpCDlist().clear();
                 BillController.returnBill(u,stage,oldScene);
                 price = 0;
+                priceText.setText(String.valueOf(price));
             }
         });
         returnBt.setPrefHeight(25.0);
@@ -122,54 +126,80 @@ public class BillView  {
                         quantityLabel.setVisible(true);
                         spinner.setEditable(true);
                         spinner.setVisible(true);
-                        spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1,cdManager.getCdList().get(idx).getTotalQuantity(),1,1));
+                        spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,cdManager.getCdList().get(idx).getTotalQuantity(),0,1));
                         errText.setText("Found!");
+                        errText.setStyle("-fx-fill: green;");
                         errText.setVisible(true);
+                        addBt.setVisible(true);
+                        removeBt.setVisible(true);
+                        createBillBt.setVisible(true);
+                        priceLabel.setVisible(true);
+                        priceText.setVisible(true);
                         if (cdManager.getCdList().get(idx) != null) {
-                            addBt.setOnAction(new EventHandler<ActionEvent>() {
-                                @Override
-                                public void handle(ActionEvent event) {
-                                    CD c = cdManager.getCdList().get(idx);
+                            if (searchField.getText().equals("")) addBt.setOnAction(null);
+                            else
+                            {
+                                addBt.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent event) {
+                                        errText.setVisible(false);
 
-                                    c.setTotalQuantity(c.getTotalQuantity() - spinner.getValue());
 
-                                    c.setTmpQuantity(spinner.getValue());
+                                        CD c = cdManager.getCdList().get(idx);
 
-                                    BillController.addToTable(cdBillTable,c);
+                                        c.setTotalQuantity(c.getTotalQuantity() - spinner.getValue());
 
-                                    price  += c.getSellingPrice() * c.getTmpQuantity();
+                                        c.setTmpQuantity(spinner.getValue());
 
-                                    priceText.setText(String.valueOf(price));
+                                        BillController.addToTable(cdBillTable,c);
 
-                                }
-                            });
+                                        price  += c.getSellingPrice() * c.getTmpQuantity();
+
+                                        priceText.setText(String.valueOf(price));
+
+                                        spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,c.getTotalQuantity(),0,1));
+
+                                        addBt.setVisible(false);
+                                        quantityLabel.setVisible(false);
+                                        spinner.setVisible(false);
+                                    }
+                                });
+                                removeBt.setOnAction(new EventHandler<ActionEvent>() {
+                                    @Override
+                                    public void handle(ActionEvent event) {
+
+                                        CD c = cdBillTable.getSelectionModel().getSelectedItem();
+                                        c.setTotalQuantity(c.getTotalQuantity() + c.getTmpQuantity());
+
+                                        price  -= c.getSellingPrice() * c.getTmpQuantity();
+                                        c.setTmpQuantity(0);
+
+                                        spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,c.getTotalQuantity(),0,1));
+                                        BillController.removeFromTable(cdBillTable,priceText);
+                                        cdBillTable.getSelectionModel().clearSelection();
+                                    }
+                                });
+                            }
 
                         }
                         else {
                             addBt.setOnAction(null);
                         }
 
-                        removeBt.setOnAction(new EventHandler<ActionEvent>() {
-                            @Override
-                            public void handle(ActionEvent event) {
-                                BillController.removeFromTable(cdBillTable,priceText);
-                            }
-                        });
-
                     }
                     else {
                         errText.setText("Out of Stock!");
+                        errText.setStyle("-fx-fill: red;");
                         errText.setVisible(true);
                     }
                 }
                 else {
                     errText.setText("Not Found!");
+                    errText.setStyle("-fx-fill: red;");
                     errText.setVisible(true);
                 }
             }
         });
-
-
 
 
 
@@ -181,7 +211,6 @@ public class BillView  {
 
         searchField.setLayoutX(484.0);
         searchField.setLayoutY(15.0);
-        searchField.setOnKeyPressed(null);//this::searchCD
 
         addBt.setLayoutX(195.0);
         addBt.setLayoutY(534.0);
@@ -189,6 +218,7 @@ public class BillView  {
         addBt.setPrefWidth(66.0);
         addBt.getStyleClass().add("add");
         addBt.setText("Add");
+        addBt.setVisible(false);
 
         removeBt.setLayoutX(279.0);
         removeBt.setLayoutY(534.0);
@@ -196,40 +226,57 @@ public class BillView  {
         removeBt.setPrefWidth(66.0);
         removeBt.getStyleClass().add("remove");
         removeBt.setText("Remove");
+        removeBt.setVisible(false);
+        removeBt.disableProperty().bind(Bindings.isEmpty(cdBillTable.getSelectionModel().getSelectedItems()));
 
-        createBillBt.setLayoutX(639.0);
-        createBillBt.setLayoutY(529.0);
+        createBillBt.setLayoutX(657.0);
+        createBillBt.setLayoutY(527.0);
         createBillBt.setOnAction(new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
-            System.out.println("LOL");
-            BillController.generateBillSell();
+            BillController.generateBillSell(u);
+            price = 0;
+            priceText.setText(String.valueOf(price));
+            generateText.setVisible(true);
+            generateText.setText("Sucess!");
+            cdBillTable.getItems().clear();
+            BillController.getTmpCDlist().clear();
+            searchField.setText("");
         }
         });
 
         createBillBt.setPrefHeight(35.0);
         createBillBt.setPrefWidth(114.0);
-        createBillBt.getStyleClass().add("edit");
+        createBillBt.getStyleClass().add("modify");
         createBillBt.setText("Create Bill");
+        createBillBt.setVisible(false);
+
 
         errText.setLayoutX(714.0);
         errText.setLayoutY(32.0);
         errText.setStyle("-fx-fill: red;");
         errText.setVisible(false);
 
+        generateText.setLayoutX(602.0);
+        generateText.setLayoutY(551.0);
+        generateText.setStyle("-fx-fill: green;");
+        generateText.setVisible(false);
 
-        priceLabel.setLayoutX(458.0);
+
+        priceLabel.setLayoutX(418.0);
         priceLabel.setLayoutY(528.0);
         priceLabel.setPrefHeight(36.0);
         priceLabel.setPrefWidth(66.0);
         priceLabel.setStyle("-fx-font-size: 20;");
         priceLabel.setText("Price:");
+        priceLabel.setVisible(false);
 
-        priceText.setLayoutX(526.0);
+        priceText.setLayoutX(485.0);
         priceText.setLayoutY(555.0);
         priceText.setStyle("-fx-font-size: 20;");
         priceText.setText("0.0");
-        priceText.setWrappingWidth(200);
+        priceText.setWrappingWidth(149);
+        priceText.setVisible(false);
 
         spinner.setLayoutX(111.0);
         spinner.setLayoutY(534.0);
@@ -273,11 +320,11 @@ public class BillView  {
         anchorPane.getChildren().add(priceText);
         anchorPane.getChildren().add(quantityLabel);
         anchorPane.getChildren().add(spinner);
+        anchorPane.getChildren().add(generateText);
 
     }
 
     public Scene generateBillViewScene () {
-        //EmployeeController.updateTable(employTable);
         return new Scene(anchorPane, 793, 573);
     }
 

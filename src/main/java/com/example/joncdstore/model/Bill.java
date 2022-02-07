@@ -39,10 +39,11 @@ public abstract class Bill implements CustomDate{
     }
 
 
-    public String writetoBill() {
+    public String writetoBill(String name) {
         String text = "Bill Nr." + getBillNr() + "\n" +
                         "Date: " + date + "\n" +
                         "Type: " + type + "\n" +
+                        "Operator: " + name + "\n" +
                         "---------------------List of items---------------------" + "\n";
         CdManager cdManager = new CdManager(type);
         cdManager.setCdList(items);

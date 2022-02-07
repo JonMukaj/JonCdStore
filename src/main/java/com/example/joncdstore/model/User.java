@@ -24,7 +24,6 @@ public class User implements Serializable,Cloneable,CustomDate {
 
     private int nrOfCdSold;
     private int nrOfCdBought;
-
     private int nrOfBillSold;
     private int nrOfBillBought;
 
@@ -158,9 +157,9 @@ public class User implements Serializable,Cloneable,CustomDate {
     }
 
     public String checkPrivilege() {
-        if(privilege == 1) return "Admin";
+        if(privilege == 3) return "Cashier";
         else if (privilege == 2) return "Manager";
-        else return "Cashier";
+        else return "Admin";
     }
 
     public void setUsername(String username) {

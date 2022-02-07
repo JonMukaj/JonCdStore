@@ -67,10 +67,10 @@ public class CD implements Serializable {
 
     public String toString(String type) {
         if (type.equals("Purchase")) {
-            return titleOfCd + " " + genre + " " + author + " " + Math.abs(purchasedPrice) + "\n";
+            return titleOfCd + " " + genre + " " + author + " " + Math.abs(purchasedPrice) + " x " + tmpQuantity + "\n";
         }
         else if (type.equals("Sell")){
-            return titleOfCd + " " + genre + " " + author + " " + sellingPrice + "\n";
+            return titleOfCd + " " + genre + " " + author + " " + sellingPrice + " x " + tmpQuantity + "\n";
         }
         return "";
     }

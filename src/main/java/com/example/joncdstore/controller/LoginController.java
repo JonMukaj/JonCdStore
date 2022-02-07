@@ -45,7 +45,7 @@ public class LoginController {
         }
         if(username.equals("admin") && password.equals("admin")) {
             System.out.println("Logged in");
-            User adminUser = new User("admin","admin",1,"Admin","Admin","02/02/2022", GENDER.UNSPECIFIED,"0696969069",
+            User adminUser = new User("admin","admin",0,"Admin","Admin","02/02/2022", GENDER.UNSPECIFIED,"0696969069",
                     "admin@epoka.edu.al",0);
             stage.setTitle("CD WORLD");
             stage.setScene(new MainMenuAdmin(adminUser,stage).createAdminScene());

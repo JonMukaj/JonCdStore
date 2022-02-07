@@ -10,7 +10,7 @@ public class test {
 
         CD cdTest1 = new CD("COD Vanguard","Action","Activision",59.9,65.5,5);
         CD cdTest2 = new CD("American Pie","Comedy","Blizzard",35,40,10);
-        CD cdTest3 = new CD("BF4","Drama","EA",89,92,0);
+        CD cdTest3 = new CD("BF4","Drama","EA",89,92,20);
 
         CdManager cdManager = new CdManager("Purchase");
         cdManager.getCdList().add(cdTest1);
@@ -28,7 +28,7 @@ public class test {
         //System.out.println(cdManager.showCD());
         Bill b = new BillPurchase(price,cdManager.getCdList());
         BillManager bManager = new BillManager();
-        bManager.createBill(b);
+        bManager.createBill(b,"Jon Mukaj");
 
         CdManager cdManager1 = new CdManager("Purchase");
         cdManager.readCD();

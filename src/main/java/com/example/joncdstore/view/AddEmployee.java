@@ -375,8 +375,15 @@ public class AddEmployee implements ValidatePassword {
                 }
 
                 if (!salaryPrompt.getText().trim().equals("")) {
-                    newUser.setSalary(Double.valueOf(salaryPrompt.getText()));
-                    salaryErr.setVisible(false);
+                    try {
+                        newUser.setSalary(Double.valueOf(salaryPrompt.getText()));
+                        salaryErr.setVisible(false);
+                    }
+                    catch (NumberFormatException e) {
+                        newUser.setSalary(0);
+                        salaryErr.setVisible(false);
+                    }
+
                 } else {
                     salaryErr.setVisible(true);
                     fieldsFull = false;

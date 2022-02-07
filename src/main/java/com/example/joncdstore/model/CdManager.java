@@ -114,7 +114,7 @@ public class CdManager implements Serializable {
         int idx = 0;
         for(CD i : cdList) {
             if (i.getTitleOfCd().equals(cdTitle)) {
-                System.out.println("CD FOUND!");
+                //System.out.println("CD FOUND!");
                 return idx;
             }
             idx++;
@@ -125,7 +125,7 @@ public class CdManager implements Serializable {
 
     public boolean searchCD(int idx) {
         if (cdList.get(idx).getTotalQuantity() > 0) {
-            System.out.println("CD in stock!");
+            //System.out.println("CD in stock!");
             return true;
         }
         return false;
