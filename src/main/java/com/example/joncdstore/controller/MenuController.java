@@ -76,5 +76,9 @@ public class MenuController {
         mainMenu.getChildren().add(new BillMenu(u,stage).getAnchorPane());
     }
 
+    public static void createLogisticsNode(AnchorPane mainMenu, User u, Stage stage) {
+        mainMenu.getChildren().add(new LogisticsMenu(u,stage).getAnchorPane());
+    }
+
 
 }

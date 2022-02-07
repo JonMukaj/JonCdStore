@@ -1,6 +1,7 @@
 package com.example.joncdstore.view;
 
 import com.example.joncdstore.controller.BillController;
+import com.example.joncdstore.controller.LogisticsController;
 import com.example.joncdstore.model.CD;
 import com.example.joncdstore.model.User;
 import javafx.event.ActionEvent;
@@ -83,7 +84,12 @@ public class Catalogue {
 
         buyBt.setLayoutX(101.0);
         buyBt.setLayoutY(15.0);
-        buyBt.setOnAction(null);//this::createBuyPane
+        buyBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                LogisticsController.createSupplyViewScene(u,stage);
+            }
+        });
         buyBt.setPrefHeight(25.0);
         buyBt.setPrefWidth(66.0);
         buyBt.getStyleClass().add("add");
@@ -121,7 +127,7 @@ public class Catalogue {
         sellBt.getStyleClass().add("add");
         sellBt.setText("Sell");
 
-        if (u.getPrivilege() == 1){
+        if (u.getPrivilege() == 1 || u.getPrivilege() == 0){
             buyBt.setVisible(false);
             sellBt.setVisible(false);
             refreshBt.setVisible(false);

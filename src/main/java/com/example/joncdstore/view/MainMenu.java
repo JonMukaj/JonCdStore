@@ -112,7 +112,12 @@ public class MainMenu  {
 
         logisticsBt.setLayoutX(0);
         logisticsBt.setLayoutY(74.0);
-        logisticsBt.setOnAction(null);
+        logisticsBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                MenuController.createLogisticsNode(mainMenu,u,stage);
+            }
+        });
         logisticsBt.setPrefHeight(68.0);
         logisticsBt.setPrefWidth(209.0);
         logisticsBt.setStyle("-fx-font-size: 25;");

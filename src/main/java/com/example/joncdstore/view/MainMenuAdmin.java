@@ -45,10 +45,6 @@ public class MainMenuAdmin extends MainMenu{
 
         Name.setStyle("-fx-font-family: 'Brush Script MT'; -fx-fill: #e14352; -fx-font-size: 50;");
 
-        /*if (u.getUsername().matches("admin") && u.getPassword().matches("admin")) {
-            billBt.setOnAction(null);
-            billBt.getStyleClass().add("inactiveAdmin");
-        }*/
 
         employeesBt.setOnAction(new EventHandler<ActionEvent>() {
             @Override

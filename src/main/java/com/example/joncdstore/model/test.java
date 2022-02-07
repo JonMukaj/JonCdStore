@@ -19,6 +19,19 @@ public class test {
 
         cdManager.addCd();
 
+        double [] randomValue = new double[5];
+        for(int i = 0; i < 5; i++) {
+            randomValue[i] = (Math.random() * 100) + 30;
+            System.out.println(String.format("%.2f",randomValue[i]));
+        }
+
+        System.out.println("\n");
+        for(int i = 0; i < 5; i++) {
+            randomValue[i] *= 1.1;
+            System.out.println(String.format("%.2f",randomValue[i]));
+        }
+
+        /*
         double price = 0;
 
         for(CD i: cdManager.getCdList())
@@ -28,10 +41,10 @@ public class test {
         //System.out.println(cdManager.showCD());
         Bill b = new BillPurchase(price,cdManager.getCdList());
         BillManager bManager = new BillManager();
-        bManager.createBill(b,"Jon Mukaj");
+        //bManager.createBill(b,"Jon Mukaj");
 
         CdManager cdManager1 = new CdManager("Purchase");
-        cdManager.readCD();
+        cdManager.readCD();*/
 
 /*
 

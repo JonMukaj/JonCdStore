@@ -393,8 +393,6 @@ public class AddEmployee implements ValidatePassword {
                     EmployeeController.confirmAddUser(newUser);
                     stage.setScene(new Employee(u, stage).generateEmployeeScene());
                     window.close();
-                } else {
-                    fieldsFull = true;
                 }
 
             }

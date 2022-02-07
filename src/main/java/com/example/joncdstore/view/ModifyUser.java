@@ -81,17 +81,20 @@ public class ModifyUser{
         adminItem.setText("Admin");
         adminItem.setOnAction(event -> {
             modifiedUser.setProfession("Admin");
+            modifiedUser.setPrivilege(1);
             professionPrompt.setText("Admin");
         });
         managerItem.setText("Manager");
         managerItem.setOnAction(event -> {
             modifiedUser.setProfession("Manager");
+            modifiedUser.setPrivilege(2);
             professionPrompt.setText("Manager");
         });
 
         cashierItem.setText("Cashier");
         cashierItem.setOnAction(event -> {
             modifiedUser.setProfession("Cashier");
+            modifiedUser.setPrivilege(3);
             professionPrompt.setText("Cashier");
         });
 

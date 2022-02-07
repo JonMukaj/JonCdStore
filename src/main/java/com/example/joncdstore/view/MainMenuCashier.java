@@ -18,28 +18,23 @@ public class MainMenuCashier extends MainMenu{
 
         performanceBt.getStyleClass().add("buttonCashier");
         performanceBt.setTextFill(Color.GREEN);
-        performanceBt.setOnAction(null);
-        performanceBt.getStyleClass().add("inactiveCashier");
+        performanceBt.setDisable(true);
 
         statisticsBt.getStyleClass().add("buttonCashier");
         statisticsBt.setTextFill(Color.GREEN);
-        statisticsBt.setOnAction(null);
-        statisticsBt.getStyleClass().add("inactiveCashier");
+        statisticsBt.setDisable(true);
 
         employeesBt.getStyleClass().add("buttonCashier");
         employeesBt.setTextFill(Color.GREEN);
-        employeesBt.setOnAction(null);
-        employeesBt.getStyleClass().add("inactiveCashier");
+        employeesBt.setDisable(true);
 
         financesBt.getStyleClass().add("buttonCashier");
         financesBt.setTextFill(Color.GREEN);
-        financesBt.setOnAction(null);
-        financesBt.getStyleClass().add("inactiveCashier");
+        financesBt.setDisable(true);
 
         logisticsBt.getStyleClass().add("buttonCashier");
         logisticsBt.setTextFill(Color.GREEN);
-        logisticsBt.setOnAction(null);
-        logisticsBt.getStyleClass().add("inactiveCashier");
+        logisticsBt.setDisable(true);
 
         accountBt.getStyleClass().add("buttonCashier");
         accountBt.setTextFill(Color.GREEN);

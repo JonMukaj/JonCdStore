@@ -12,8 +12,8 @@ import javafx.stage.Stage;
 public class BillMenu{
 
     private final AnchorPane anchorPane;
-    protected final Button sellBt;
-    protected final Button catalogueBt;
+    private final Button sellBt;
+    private final Button catalogueBt;
 
     public BillMenu(User u, Stage stage) {
 
@@ -34,7 +34,7 @@ public class BillMenu{
             public void handle(ActionEvent event) {
                 BillController.createBillViewScene(u,stage);
             }
-        });//this::createSellPane
+        });
         sellBt.setPrefHeight(84.0);
         sellBt.setPrefWidth(289.0);
         sellBt.setStyle("-fx-font-size: 40;");
@@ -48,7 +48,7 @@ public class BillMenu{
             public void handle(ActionEvent event) {
                 BillController.createCatalogueScene(u,stage,event);
             }
-        });//this::createCdPane
+        });
         catalogueBt.setPrefHeight(84.0);
         catalogueBt.setPrefWidth(289.0);
         catalogueBt.setStyle("-fx-font-size: 40;");
@@ -66,8 +66,8 @@ public class BillMenu{
             anchorPane.setStyle("-fx-background-color: #DB8C89;");
             catalogueBt.getStyleClass().add("buttonAdmin");
             catalogueBt.setTextFill(Color.valueOf("#5C0000"));
-            sellBt.setOnAction(null);
-            sellBt.getStyleClass().add("inactiveAdmin");
+            sellBt.setDisable(true);
+            sellBt.getStyleClass().add("buttonAdmin");
         }
         anchorPane.setLayoutX(233);
         anchorPane.setLayoutY(110);
@@ -79,8 +79,5 @@ public class BillMenu{
     public AnchorPane getAnchorPane() {
         return anchorPane;
     }
-//protected abstract void createSellPane(javafx.event.ActionEvent actionEvent);
-
-    //protected abstract void createCdPane(javafx.event.ActionEvent actionEvent);
 
 }

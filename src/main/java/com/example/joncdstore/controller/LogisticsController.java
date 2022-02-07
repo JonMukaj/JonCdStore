@@ -1,65 +1,42 @@
 package com.example.joncdstore.controller;
 
+import com.example.joncdstore.App;
 import com.example.joncdstore.model.*;
 import com.example.joncdstore.view.BillView;
-import com.example.joncdstore.view.Catalogue;
+import com.example.joncdstore.view.ChangePassword;
+import com.example.joncdstore.view.FindCD;
+import com.example.joncdstore.view.SupplyView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class BillController {
+public class LogisticsController {
 
     private static ArrayList<CD> tmpCDlist = new ArrayList<>();
-    private BillController() {
+    private static CD c;
 
-    }
+    public LogisticsController() {}
 
-    public static void createBillViewScene(User u, Stage stage) {
-        stage.setTitle("Sell");
-        Scene oldScene = stage.getScene();
-        stage.setScene(new BillView(u,stage,oldScene).generateBillViewScene());
-    }
 
-    public static void createCatalogueScene(User u, Stage stage, ActionEvent e) {
-        String t = ((Button)e.getSource()).getText();
-        if (t.equals("CATALOGUE")) {
-            stage.setTitle("Catalogue");
-            Scene oldScene = stage.getScene();
-            stage.setScene(new Catalogue(u,stage,"sellingPrice",oldScene).generateCatalogueScene("sellingPrice"));
-        }
-        else if (t.equals("SUPPLY")) {
-            stage.setTitle("Supply");
-            Scene oldScene = stage.getScene();
-            stage.setScene(new Catalogue(u,stage,"purchasedPrice",oldScene).generateCatalogueScene("purchasedPrice"));
-        }
-
-    }
-
-    public static void returnBill(User u, Stage stage,Scene oldScene) {
-        stage.setTitle("CD WORLD");
-        stage.setScene(oldScene);
-
-    }
-
-    public static void updateTable(TableView<CD> t,String type) {
-        CdManager cdManager = new CdManager(type);
-        cdManager.readCD();
-        ObservableList<CD> cdList = FXCollections.observableArrayList(cdManager.getCdList());
-        t.setItems(cdList);
-    }
-
-    public static void addToTable(TableView<CD> t,CD c) {
+    public static void addToCart(TableView<CD> t,CD c) {
+        LogisticsController.c = c;
         tmpCDlist.add(c);
         ObservableList<CD> cdList = FXCollections.observableArrayList(tmpCDlist);
         t.setItems(cdList);
+    }
+
+    public static void createSupplyViewScene(User u, Stage stage) {
+        stage.setTitle("Buy");
+        Scene oldScene = stage.getScene();
+        stage.setScene(new SupplyView(u,stage,oldScene).generateBillViewScene());
     }
 
     public static void removeFromTable(TableView<CD> t, Text priceText) {
@@ -84,25 +61,40 @@ public class BillController {
 
     }
 
-    public static void generateBillSell(User u) {
-        CdManager cdManager = new CdManager("Sell");
+    public static void generateBillPurchase(User u) {
+        CdManager cdManager = new CdManager("Purchase");
         cdManager.readCD();
+
         for(CD i : cdManager.getCdList()) {
             for(CD j : tmpCDlist) {
                 if(i.getTitleOfCd().matches(j.getTitleOfCd())) {
                     i.setTotalQuantity(j.getTotalQuantity());
-                    u.setNrOfCdSold(u.getNrOfCdSold() + j.getTmpQuantity());
+                    u.setNrOfCdBought(u.getNrOfCdBought() + j.getTmpQuantity());
                 }
             }
         }
         cdManager.addCd();
-        Bill b = new BillSell(BillView.getPrice(),tmpCDlist);
+        Bill b = new BillPurchase(SupplyView.getPrice(),tmpCDlist);
         BillManager billManager = new BillManager();
         billManager.createBill(b,u);
     }
 
-
     public static ArrayList<CD> getTmpCDlist() {
         return tmpCDlist;
+    }
+
+    public static CD getC() {
+        return c;
+    }
+
+    public static void findCD(TableView<CD> t) {
+        Stage window = new Stage();
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.setTitle("Find CD");
+        window.setResizable(false);
+        window.getIcons().add(new Image(App.class.getResourceAsStream("img/icon.jpg")));
+        Scene scene = new Scene(new FindCD(t,window).getAnchorPane(),272,323);
+        window.setScene(scene);
+        window.showAndWait();
     }
 }

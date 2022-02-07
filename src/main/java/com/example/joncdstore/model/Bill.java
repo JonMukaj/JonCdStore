@@ -39,22 +39,42 @@ public abstract class Bill implements CustomDate{
     }
 
 
-    public String writetoBill(String name) {
+    public String writetoBill(User u) {
         String text = "Bill Nr." + getBillNr() + "\n" +
                         "Date: " + date + "\n" +
                         "Type: " + type + "\n" +
-                        "Operator: " + name + "\n" +
+                        "Operator: " + u.getName() + " " + u.getSurname() + "\n" +
                         "---------------------List of items---------------------" + "\n";
         CdManager cdManager = new CdManager(type);
         cdManager.setCdList(items);
 
-        String price = "Total: " + Math.abs(priceOfTransaction) + "\n";
+        int nrOfCD = 0;
+        for(CD i : cdManager.getCdList()) {
+            nrOfCD += i.getTmpQuantity();
+        }
 
-        if (type.equals("Purchase"))
+        String price = "Total: " + priceOfTransaction + "\n";
+
+        if (type.equals("Purchase")) {
+            u.setNrOfBillBought(u.getNrOfBillBought() + 1);
+            Statistics.setTotalNrOfCdBought(Statistics.getTotalNrOfCdBought() + nrOfCD);
             Statistics.setTotalNrOfBillBought(Statistics.getTotalNrOfBillBought() + 1);
-        else
+            String tmp = String.format("%.2f",priceOfTransaction);
+
+            Statistics.setCost(Statistics.getCost() + Double.parseDouble(tmp));
+        }
+
+        else {
+            u.setNrOfBillSold(u.getNrOfBillSold() + 1);
+            Statistics.setTotalNrOfCdSold(Statistics.getTotalNrOfCdSold()+ nrOfCD);
             Statistics.setTotalNrOfBillSold(Statistics.getTotalNrOfBillSold() + 1);
-        return text + cdManager.showCD() + price;
+            String tmp = String.format("%.2f",priceOfTransaction);
+            Statistics.setRevenue(Statistics.getRevenue() + Double.parseDouble(tmp));
+        }
+
+        System.out.println(u.getNrOfCdBought());
+        System.out.println(u.getNrOfBillBought());
+        return text + cdManager.showCD() + "\n" + price;
     }
 
     public void setItems(ArrayList<CD> items) {

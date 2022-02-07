@@ -9,7 +9,7 @@ public class CD implements Serializable {
     private final String titleOfCd;
     private final String genre;
     private final String author;
-    private final double purchasedPrice;
+    private double purchasedPrice;
     private double sellingPrice;
     private int totalQuantity;
     private int tmpQuantity;
@@ -52,11 +52,6 @@ public class CD implements Serializable {
         return tmpQuantity;
     }
 //setters
-
-    public void setSellingPrice(double sellingPrice) {
-        this.sellingPrice = sellingPrice;
-    }
-
     public void setTotalQuantity(int totalQuantity) {
         this.totalQuantity = totalQuantity;
     }
@@ -67,7 +62,7 @@ public class CD implements Serializable {
 
     public String toString(String type) {
         if (type.equals("Purchase")) {
-            return titleOfCd + " " + genre + " " + author + " " + Math.abs(purchasedPrice) + " x " + tmpQuantity + "\n";
+            return titleOfCd + " " + genre + " " + author + " " + Math.abs(purchasedPrice) + " x " + totalQuantity + "\n";
         }
         else if (type.equals("Sell")){
             return titleOfCd + " " + genre + " " + author + " " + sellingPrice + " x " + tmpQuantity + "\n";

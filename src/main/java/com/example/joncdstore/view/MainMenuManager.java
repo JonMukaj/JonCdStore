@@ -13,8 +13,7 @@ public class MainMenuManager extends MainMenu{
 
         billBt.getStyleClass().add("buttonManager");
         billBt.setTextFill(Color.valueOf("#0022ff"));
-        billBt.setOnAction(null);
-        billBt.getStyleClass().add("inactiveManager");
+        billBt.setDisable(true);
 
         performanceBt.getStyleClass().add("buttonManager");
         performanceBt.setTextFill(Color.valueOf("#0022ff"));
@@ -24,13 +23,11 @@ public class MainMenuManager extends MainMenu{
 
         employeesBt.getStyleClass().add("buttonManager");
         employeesBt.setTextFill(Color.valueOf("#0022ff"));
-        employeesBt.setOnAction(null);
-        employeesBt.getStyleClass().add("inactiveManager");
+        employeesBt.setDisable(true);
 
         financesBt.getStyleClass().add("buttonManager");
         financesBt.setTextFill(Color.valueOf("#0022ff"));
-        financesBt.setOnAction(null);
-        financesBt.getStyleClass().add("inactiveManager");
+        financesBt.setDisable(true);
 
         logisticsBt.getStyleClass().add("buttonManager");
         logisticsBt.setTextFill(Color.valueOf("#0022ff"));

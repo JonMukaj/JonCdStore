@@ -11,11 +11,11 @@ public class BillManager {
 
     }
 
-    public void createBill(Bill b,String name) {
+    public void createBill(Bill b,User u) {
         try {
             File f1 = new File(billName + b.getBillNr() + ".txt");
             PrintWriter f2 = new PrintWriter(f1);
-            f2.write(b.writetoBill(name));
+            f2.write(b.writetoBill(u));
             f2.close();
             Statistics.pushStatistics();
         } catch (IOException e) {
