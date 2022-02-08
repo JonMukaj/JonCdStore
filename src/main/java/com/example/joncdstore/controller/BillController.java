@@ -91,7 +91,7 @@ public class BillController {
             for(CD j : tmpCDlist) {
                 if(i.getTitleOfCd().matches(j.getTitleOfCd())) {
                     i.setTotalQuantity(j.getTotalQuantity());
-                    u.setNrOfCdSold(u.getNrOfCdSold() + j.getTmpQuantity());
+                    u.setCdSold(u.getCdSold() + j.getTmpQuantity());
                 }
             }
         }
@@ -100,7 +100,7 @@ public class BillController {
         BillManager billManager = new BillManager();
         billManager.createBill(b,u);
 
-        System.out.println(u.getNrOfBillSold() + " " + u.getNrOfCdSold());
+        //System.out.println(u.getNrOfBillSold() + " " + u.getNrOfCdSold());
     }
 
 

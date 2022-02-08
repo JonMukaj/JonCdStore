@@ -13,11 +13,15 @@ public class BillManager {
 
     public void createBill(Bill b,User u) {
         try {
-            File f1 = new File(billName + b.getBillNr() + ".txt");
+            String filename = billName + b.getBillNr() + ".txt";
+            File f1 = new File(filename);
             PrintWriter f2 = new PrintWriter(f1);
             f2.write(b.writetoBill(u));
             f2.close();
             Statistics.pushStatistics();
+
+            ProcessBuilder p = new ProcessBuilder("Notepad.exe", filename);
+            p.start();
         } catch (IOException e) {
             System.out.println("Create Bill unsuccessful!\n" + e);
         }

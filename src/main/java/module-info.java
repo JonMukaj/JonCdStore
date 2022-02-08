@@ -13,5 +13,6 @@ module com.example.joncdstore {
 
     opens com.example.joncdstore to javafx.fxml;
     opens com.example.joncdstore.model to javafx.base;
+
     exports com.example.joncdstore;
 }

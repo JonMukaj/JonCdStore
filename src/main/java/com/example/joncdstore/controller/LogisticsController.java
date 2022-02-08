@@ -3,7 +3,6 @@ package com.example.joncdstore.controller;
 import com.example.joncdstore.App;
 import com.example.joncdstore.model.*;
 import com.example.joncdstore.view.BillView;
-import com.example.joncdstore.view.ChangePassword;
 import com.example.joncdstore.view.FindCD;
 import com.example.joncdstore.view.SupplyView;
 import javafx.collections.FXCollections;
@@ -82,7 +81,7 @@ public class LogisticsController {
         cdManager.readCD();
 
         for(CD i : tmpCDlist) {
-            u.setNrOfCdBought(u.getNrOfCdBought() + i.getTotalQuantity());
+            u.setCdBought(u.getCdBought() + i.getTotalQuantity());
         }
 
         cdManager.getCdList().addAll(tmpCDlist);
@@ -91,7 +90,7 @@ public class LogisticsController {
         Bill b = new BillPurchase(SupplyView.getPrice(),tmpCDlist);
         BillManager billManager = new BillManager();
         billManager.createBill(b,u);
-        System.out.println(u.getNrOfBillBought() + " " + u.getNrOfCdBought());
+        //System.out.println(u.getNrOfBillBought() + " " + u.getNrOfCdBought());
     }
 
     public static ArrayList<CD> getTmpCDlist() {

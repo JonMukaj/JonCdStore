@@ -22,10 +22,10 @@ public class User implements Serializable,Cloneable,CustomDate {
     private String employmentDate;
     private String profession;
 
-    private int nrOfCdSold;
-    private int nrOfCdBought;
-    private int nrOfBillSold;
-    private int nrOfBillBought;
+    private int CdSold = 0;
+    private int CdBought = 0;
+    private int BillSold = 0;
+    private int BillBought = 0;
 
     public User() {
         this.id = UUID.randomUUID();
@@ -99,23 +99,22 @@ public class User implements Serializable,Cloneable,CustomDate {
         return profession;
     }
 
-    public int getNrOfCdSold() {
-        return nrOfCdSold;
+    public int getCdSold() {
+        return CdSold;
     }
 
-    public int getNrOfCdBought() {
-        return nrOfCdBought;
+    public int getCdBought() {
+        return CdBought;
     }
 
 
-    public int getNrOfBillSold() {
-        return nrOfBillSold;
+    public int getBillSold() {
+        return BillSold;
     }
 
-    public int getNrOfBillBought() {
-        return nrOfBillBought;
+    public int getBillBought() {
+        return BillBought;
     }
-
 
 
     @Override
@@ -134,6 +133,10 @@ public class User implements Serializable,Cloneable,CustomDate {
                 ", salary=" + salary +
                 ", employmentDate='" + employmentDate + '\'' +
                 ", profession='" + profession + '\'' +
+                ", nrOfCdSold=" + CdSold +
+                ", nrOfCdBought=" + CdBought +
+                ", nrOfBillSold=" + BillSold +
+                ", nrOfBillBought=" + BillBought +
                 '}';
     }
 
@@ -206,20 +209,20 @@ public class User implements Serializable,Cloneable,CustomDate {
         this.profession = profession;
     }
 
-    public void setNrOfCdSold(int nrOfCdSold) {
-        this.nrOfCdSold = nrOfCdSold;
+    public void setCdSold(int cdSold) {
+        this.CdSold = cdSold;
     }
 
-    public void setNrOfCdBought(int nrOfCdBought) {
-        this.nrOfCdBought = nrOfCdBought;
+    public void setCdBought(int cdBought) {
+        this.CdBought = cdBought;
     }
 
-    public void setNrOfBillSold(int nrOfBillSold) {
-        this.nrOfBillSold = nrOfBillSold;
+    public void setBillSold(int billSold) {
+        this.BillSold = billSold;
     }
 
-    public void setNrOfBillBought(int nrOfBillBought) {
-        this.nrOfBillBought = nrOfBillBought;
+    public void setBillBought(int billBought) {
+        this.BillBought = billBought;
     }
 
 }

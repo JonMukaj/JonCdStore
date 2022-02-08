@@ -72,12 +72,11 @@ public class Login {
 
         GridPane.setRowIndex(UsernameLabel, 1);
         UsernameLabel.setAlignment(Pos.TOP_RIGHT);
-        UsernameLabel.setId("color-text");
         UsernameLabel.setPrefHeight(29.0);
         UsernameLabel.setPrefWidth(171.0);
         UsernameLabel.setStyle("-fx-font-size: 15; -fx-font-weight: Bold;");
         UsernameLabel.setText("Username");
-        UsernameLabel.setTextFill(Color.valueOf("#0d0d0d"));
+        UsernameLabel.setTextFill(Color.valueOf("#FF0000"));
         UsernameLabel.setFont(new Font("Bold", 14.0));
 
         GridPane.setRowIndex(PasswordLabel, 2);
@@ -87,7 +86,7 @@ public class Login {
         PasswordLabel.setStyle("-fx-font-size: 15; -fx-font-weight: bold;");
         PasswordLabel.setText("Password");
         PasswordLabel.setTextAlignment(TextAlignment.CENTER);
-        PasswordLabel.setTextFill(Color.valueOf("#030303"));
+        PasswordLabel.setTextFill(Color.valueOf("#FF0000"));
 
         GridPane.setColumnIndex(passwordField, 1);
         GridPane.setRowIndex(passwordField, 2);

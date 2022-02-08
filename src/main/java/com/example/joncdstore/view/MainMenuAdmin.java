@@ -55,6 +55,7 @@ public class MainMenuAdmin extends MainMenu{
 
         smallMenu.setStyle("-fx-background-color: #DB8C89;");
 
+
         mainMenu.getChildren().add(Name);
         mainMenu.getChildren().add(smallMenu);
         anchorPane.getChildren().add(billBt);

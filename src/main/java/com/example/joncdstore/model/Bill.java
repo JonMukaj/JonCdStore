@@ -1,5 +1,7 @@
 package com.example.joncdstore.model;
 
+import com.example.joncdstore.controller.EmployeeController;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -61,7 +63,7 @@ public abstract class Bill implements CustomDate{
         String price = "Total: " + priceOfTransaction + "\n";
 
         if (type.equals("Purchase")) {
-            u.setNrOfBillBought(u.getNrOfBillBought() + 1);
+            u.setBillBought(u.getBillBought() + 1);
             Statistics.setTotalNrOfCdBought(Statistics.getTotalNrOfCdBought() + nrOfCDbought);
             Statistics.setTotalNrOfBillBought(Statistics.getTotalNrOfBillBought() + 1);
             String tmp = String.format("%.2f",priceOfTransaction);
@@ -70,15 +72,20 @@ public abstract class Bill implements CustomDate{
         }
 
         else {
-            u.setNrOfBillSold(u.getNrOfBillSold() + 1);
+            u.setBillSold(u.getBillSold() + 1);
             Statistics.setTotalNrOfCdSold(Statistics.getTotalNrOfCdSold()+ nrOfCDsold);
             Statistics.setTotalNrOfBillSold(Statistics.getTotalNrOfBillSold() + 1);
             String tmp = String.format("%.2f",priceOfTransaction);
             Statistics.setRevenue(Statistics.getRevenue() + Double.parseDouble(tmp));
         }
 
-        //System.out.println(u.getNrOfCdBought());
-        //System.out.println(u.getNrOfBillBought());
+        EmployeeController.saveModifyChanges(u);
+
+        System.out.println(u.getCdBought());
+        System.out.println(u.getBillBought());
+        System.out.println(u.getBillSold());
+        System.out.println(u.getCdSold());
+
         return text + cdManager.showCD() + "\n" + price;
     }
 

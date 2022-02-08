@@ -84,7 +84,12 @@ public class MainMenu  {
 
         performanceBt.setLayoutX(0);
         performanceBt.setLayoutY(142.0);
-        performanceBt.setOnAction(null);
+        performanceBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                MenuController.createPerformanceNode(mainMenu);
+            }
+        });
         performanceBt.setPrefHeight(74.0);
         performanceBt.setPrefWidth(209.0);
         performanceBt.setStyle("-fx-font-size: 25;");
@@ -93,7 +98,13 @@ public class MainMenu  {
 
         statisticsBt.setLayoutX(0);
         statisticsBt.setLayoutY(216.0);
-        statisticsBt.setOnAction(null);
+        statisticsBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                smallMenu.setStyle("-fx-background-color: #FFFFFF;");
+                MenuController.createStatisticsNode(mainMenu,u);
+            }
+        });
         statisticsBt.setPrefHeight(74.0);
         statisticsBt.setPrefWidth(209.0);
         statisticsBt.setStyle("-fx-font-size: 25;");
@@ -169,16 +180,6 @@ public class MainMenu  {
     public AnchorPane getMainMenu() {
         return mainMenu;
     }
-/*protected void showBill(javafx.event.ActionEvent actionEvent);
 
-    protected void showPerformance(javafx.event.ActionEvent actionEvent);
-
-    protected void showStatistics(javafx.event.ActionEvent actionEvent);
-
-    protected void showEmployees(javafx.event.ActionEvent actionEvent);
-
-    protected void showFinances(javafx.event.ActionEvent actionEvent);
-
-    protected void showLogistics(javafx.event.ActionEvent actionEvent);*/
 
 }

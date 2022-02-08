@@ -92,5 +92,13 @@ public class MenuController {
         mainMenu.getChildren().add(new LogisticsMenu(u,stage).getAnchorPane());
     }
 
+    public static void createPerformanceNode(AnchorPane mainMenu) {
+        mainMenu.getChildren().add(new Performance().getAnchorPane());
+    }
+
+    public static void createStatisticsNode(AnchorPane mainMenu,User u) {
+        mainMenu.getChildren().add(new StatisticsView(u).getScrollPane());
+    }
+
 
 }
