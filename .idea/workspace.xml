@@ -4,60 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37fc5751-251d-4809-a266-a37940f67ef1" name="Changes" comment="Program Finished except Finances">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/FileExceptions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/joncdstore/backup data/cd.ser" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/joncdstore/backup data/credentials.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/joncdstore/backup data/user.ser" afterDir="false" />
+    <list default="true" id="37fc5751-251d-4809-a266-a37940f67ef1" name="Changes" comment="App Finished and Fully Functional">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bill1.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bill2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cd.ser" beforeDir="false" afterPath="$PROJECT_DIR$/cd.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/BillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/BillController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/LogisticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/LogisticsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/PerformanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/controller/PerformanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/Bill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/BillManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/BillManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/BillPurchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/BillPurchase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/BillSell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/BillSell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/CD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/CD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/CdManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/CdManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/CustomDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/CustomDate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/GENDER.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/GENDER.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/Statistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/Statistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/ValidatePassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/ValidatePassword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/model/test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/BillView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/BillView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/ChangeAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/ChangeAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/Finances.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/Finances.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/LogisticsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/LogisticsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/MainMenuAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/MainMenuAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/MainMenuCashier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/MainMenuCashier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/MainMenuManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/MainMenuManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/Performance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/Performance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/StatisticsView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/StatisticsView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/SupplyView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/joncdstore/view/SupplyView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statistics.txt" beforeDir="false" afterPath="$PROJECT_DIR$/statistics.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/controller/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/controller/MenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/controller/loginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/controller/loginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/Bill.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/Bill.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/BillManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/BillManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/BillPurchase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/BillPurchase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/CD.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/CD.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/CdManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/CdManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/UserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/UserManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/model/test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/MainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/MainMenuCashier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/MainMenuCashier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/MainMenuManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/joncdstore/view/MainMenuManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user.ser" beforeDir="false" afterPath="$PROJECT_DIR$/user.ser" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,6 +131,7 @@
       <workItem from="1644222017125" duration="63693000" />
       <workItem from="1644329236684" duration="495000" />
       <workItem from="1644329759796" duration="7742000" />
+      <workItem from="1644367487142" duration="265000" />
     </task>
     <task id="LOCAL-00001" summary="View for each type of user done.">
       <created>1643756029894</created>
@@ -266,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644290250437</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="App Finished and Fully Functional">
+      <created>1644367640788</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1644367640788</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,7 +262,8 @@
     <MESSAGE value="Manager Almost Finished" />
     <MESSAGE value="Manager Fully Finished" />
     <MESSAGE value="Program Finished except Finances" />
-    <option name="LAST_COMMIT_MESSAGE" value="Program Finished except Finances" />
+    <MESSAGE value="App Finished and Fully Functional" />
+    <option name="LAST_COMMIT_MESSAGE" value="App Finished and Fully Functional" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

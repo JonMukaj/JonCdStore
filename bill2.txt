@@ -1,8 +1,0 @@
-Bill Nr.2
-Date: Mon Feb 07 02:12:40 CET 2022
-Type: Sell
----------------------List of items---------------------
-American Pie Comedy Blizzard 40.0
-American Pie Comedy Blizzard 40.0
-COD Vanguard Action Activision 65.5
-Total: 371.0
