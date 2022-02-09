@@ -100,5 +100,9 @@ public class MenuController {
         mainMenu.getChildren().add(new StatisticsView(u).getScrollPane());
     }
 
-
+    public static void createFinancesNode(Stage stage) {
+        stage.setTitle("Finances");
+        Scene oldScene = stage.getScene();
+        stage.setScene(new Finances(stage,oldScene).generateFinanceScene());
+    }
 }

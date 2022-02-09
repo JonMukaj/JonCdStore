@@ -31,7 +31,7 @@ public class CdManager implements Serializable {
             outObject.close();
 
         } catch (IOException e) {
-            System.out.println("Add CDs unsuccessful!\n" + e);
+            //System.out.println("Add CDs unsuccessful!\n" + e);
         }
     }
 
@@ -53,9 +53,10 @@ public class CdManager implements Serializable {
 
 
         } catch (ClassNotFoundException i) {
-            System.out.println("CDs cannot be found!\n" + i);
+            //System.out.println("CDs cannot be found!\n" + i);
         } catch (IOException e) {
-            System.out.println("Reading CDs unsuccessful!\n" + e);
+            addCd();
+            //System.out.println("Reading CDs unsuccessful!\n" + e);
         }
     }
 

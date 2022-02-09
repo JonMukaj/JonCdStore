@@ -121,7 +121,12 @@ public class MainMenu  {
 
         financesBt.setLayoutX(0);
         financesBt.setLayoutY(364.0);
-        financesBt.setOnAction(null);
+        financesBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                MenuController.createFinancesNode(stage);
+            }
+        });
         financesBt.setPrefHeight(74.0);
         financesBt.setPrefWidth(209.0);
         financesBt.setStyle("-fx-font-size: 25;");

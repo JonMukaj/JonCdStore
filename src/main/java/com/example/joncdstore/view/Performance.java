@@ -162,10 +162,10 @@ public class Performance {
         surnameManager.setText("Surname");
 
         billBought.setPrefWidth(116.0);
-        billBought.setText("Bills Sold");
+        billBought.setText("Bills Bought");
 
         cdBought.setPrefWidth(127.0);
-        cdBought.setText("CDs Sold");
+        cdBought.setText("CDs Bought");
 
 
 

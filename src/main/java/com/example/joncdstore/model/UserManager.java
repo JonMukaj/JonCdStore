@@ -25,7 +25,8 @@ public class UserManager implements Serializable {
             outObject.close();
 
         } catch (IOException e) {
-            System.out.println("Add users unsuccessful!\n" + e);
+            //System.out.println("Add users unsuccessful!\n" + e);
+
         }
     }
 
@@ -47,9 +48,10 @@ public class UserManager implements Serializable {
 
 
         } catch (ClassNotFoundException i) {
-            System.out.println("Users cannot be found!\n" + i);
+            //System.out.println("Users cannot be found!\n" + i);
         } catch (IOException e) {
-            System.out.println("Reading Users unsuccessful!\n" + e);
+            addUser();
+            //System.out.println("Reading Users unsuccessful!\n" + e);
         }
     }
 

@@ -1,7 +1,10 @@
 package com.example.joncdstore.view;
 
+import com.example.joncdstore.controller.StatisticsController;
 import com.example.joncdstore.model.Statistics;
 import com.example.joncdstore.model.User;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -35,6 +38,7 @@ public class StatisticsView {
     private final Button userBt;
     private final Button cdBt;
     private final Separator sep1;
+    private final Text confirmText;
 
     public StatisticsView(User u) {
 
@@ -54,6 +58,7 @@ public class StatisticsView {
         turnoverText = new Text();
         label = new Label();
         costText = new Text();
+        confirmText = new Text();
 
         sep1 = new Separator();
         sep2 = new Separator();
@@ -66,6 +71,7 @@ public class StatisticsView {
         userBt = new Button();
         cdBt = new Button();
 
+        confirmText.setVisible(false);
 
         scrollPane.getStylesheets().add(this.getClass().getResource("/Menu.css").toExternalForm());
 
@@ -116,23 +122,23 @@ public class StatisticsView {
 
         turnoverLabel.setLayoutX(195.0);
         turnoverLabel.setLayoutY(426.0);
-        turnoverLabel.setStyle("-fx-font-size: 28;");
+        turnoverLabel.setStyle("-fx-text-fill: green;-fx-font-size: 28;");
         turnoverLabel.setText("Turnover:");
 
         turnoverText.setLayoutX(481.0);
         turnoverText.setLayoutY(455.0);
-        turnoverText.setStyle("-fx-font-size: 28;");
+        turnoverText.setStyle("-fx-fill: green;-fx-font-size: 28;");
         turnoverText.setText(String.valueOf(Statistics.getRevenue()));
         turnoverText.setWrappingWidth(200.0);
 
         label.setLayoutX(169.0);
         label.setLayoutY(493.0);
-        label.setStyle("-fx-font-size: 28;");
+        label.setStyle("-fx-text-fill: red;-fx-font-size: 28;");
         label.setText("Cost Of Sales:");
 
         costText.setLayoutX(481.0);
         costText.setLayoutY(523.0);
-        costText.setStyle("-fx-font-size: 28;");
+        costText.setStyle("-fx-fill: red;-fx-font-size: 28;");
         costText.setText(String.valueOf(Statistics.getCost()));
         costText.setWrappingWidth(200.0);
 
@@ -170,7 +176,18 @@ public class StatisticsView {
 
         statisticsBt.setLayoutX(26.0);
         statisticsBt.setLayoutY(14.0);
-        statisticsBt.setOnAction(null);
+        statisticsBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                StatisticsController.deleteStatistics();
+                costText.setText("0.0");
+                cdPurchaseText.setText("0");
+                cdSellText.setText("0");
+                turnoverText.setText("0.0");
+                billPurchaseText.setText("0");
+                billSellText.setText("0");
+            }
+        });
         statisticsBt.setPrefHeight(37.0);
         statisticsBt.setPrefWidth(95.0);
         statisticsBt.setText("Reset Statistics");
@@ -178,7 +195,17 @@ public class StatisticsView {
 
         userBt.setLayoutX(150.0);
         userBt.setLayoutY(14.0);
-        userBt.setOnAction(null);
+        userBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                StatisticsController.deleteUser();
+                confirmText.setLayoutX(177.0);
+                confirmText.setLayoutY(66.0);
+                confirmText.setStyle("-fx-fill: red;-fx-font-size: 18;");
+                confirmText.setText("Done!");
+                confirmText.setVisible(true);
+            }
+        });
         userBt.setPrefHeight(37.0);
         userBt.setPrefWidth(102.0);
         userBt.setText("Delete User Info");
@@ -186,7 +213,17 @@ public class StatisticsView {
 
         cdBt.setLayoutX(281.0);
         cdBt.setLayoutY(14.0);
-        cdBt.setOnAction(null);
+        cdBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                StatisticsController.deleteCD();
+                confirmText.setLayoutX(304.0);
+                confirmText.setLayoutY(66.0);
+                confirmText.setStyle("-fx-fill: red;-fx-font-size: 18;");
+                confirmText.setText("Done!");
+                confirmText.setVisible(true);
+            }
+        });
         cdBt.setPrefHeight(37.0);
         cdBt.setPrefWidth(94.0);
         cdBt.setText("Delete CD Info");
@@ -221,6 +258,7 @@ public class StatisticsView {
         anchorPane.getChildren().add(statisticsBt);
         anchorPane.getChildren().add(userBt);
         anchorPane.getChildren().add(cdBt);
+        anchorPane.getChildren().add(confirmText);
 
         scrollPane.setContent(anchorPane);
 

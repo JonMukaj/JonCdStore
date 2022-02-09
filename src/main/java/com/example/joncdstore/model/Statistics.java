@@ -64,10 +64,6 @@ public class Statistics {
         }
     }
 
-    public static void deleteStatistics() {
-        File f1 = new File("statistics.txt");
-        f1.delete();
-    }
 
     public static int getTotalNrOfCdSold() {
         return totalNrOfCdSold;

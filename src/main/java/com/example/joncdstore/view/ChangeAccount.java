@@ -136,6 +136,7 @@ public class ChangeAccount {
 
                 if (!namePrompt.getText().trim().equals("")) {
                     int idx = namePrompt.getText().lastIndexOf(' ');
+                    // TODO Exception when enter only one name
                     String firstName = namePrompt.getText().substring(0,idx);
                     String lastName = namePrompt.getText().substring(idx +1);
                     u.setName(firstName);
