@@ -55,7 +55,7 @@ public class CD implements Serializable {
     public int getTmpQuantity() {
         return tmpQuantity;
     }
-//setters
+    //setters
     public void setTotalQuantity(int totalQuantity) {
         this.totalQuantity = totalQuantity;
     }

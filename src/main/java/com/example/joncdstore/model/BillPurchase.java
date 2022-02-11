@@ -11,6 +11,7 @@ public class BillPurchase extends Bill{
         setType("Purchase");
         setItems(listOfItems);
         setPriceOfTransaction(priceOfTransaction);
+        //System.out.println(priceOfTransaction);
     }
 
 

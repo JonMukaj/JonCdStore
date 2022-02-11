@@ -36,7 +36,7 @@ public class Statistics {
             }
 
         } catch (IOException e) {
-            System.out.println("Pop Statistics unsuccessful!\n" + e);
+            //System.out.println("Pop Statistics unsuccessful!\n" + e);
         }
     }
 
@@ -60,7 +60,7 @@ public class Statistics {
             f2.close();
 
         } catch (IOException e) {
-            System.out.println("Push Statistics unsuccessful!\n" + e);
+            //System.out.println("Push Statistics unsuccessful!\n" + e);
         }
     }
 

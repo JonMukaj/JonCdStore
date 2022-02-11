@@ -19,7 +19,7 @@ import java.util.Iterator;
 
 public class LogisticsController {
 
-    private static ArrayList<CD> tmpCDlist = new ArrayList<>();
+    private static final ArrayList<CD> tmpCDlist = new ArrayList<>();
     private static CD c;
 
     public LogisticsController() {}

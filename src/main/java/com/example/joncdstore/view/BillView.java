@@ -135,6 +135,7 @@ public class BillView  {
                         createBillBt.setVisible(true);
                         priceLabel.setVisible(true);
                         priceText.setVisible(true);
+                        generateText.setVisible(false);
                         if (cdManager.getCdList().get(idx) != null) {
                             if (searchField.getText().equals("")) addBt.setOnAction(null);
                             else

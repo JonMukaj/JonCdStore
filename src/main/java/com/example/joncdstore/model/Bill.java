@@ -1,6 +1,7 @@
 package com.example.joncdstore.model;
 
 import com.example.joncdstore.controller.EmployeeController;
+import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,9 +42,9 @@ public abstract class Bill implements CustomDate{
     }
 
 
-    public String writetoBill(User u) {
+    public String writetoBill(@NotNull User u) {
         String text = "Bill Nr." + getBillNr() + "\n" +
-                        "Date: " + date + "\n" +
+                        "Date: " + dateOfTransaction + "\n" +
                         "Type: " + type + "\n" +
                         "Operator: " + u.getName() + " " + u.getSurname() + "\n" +
                         "---------------------List of items---------------------" + "\n";
@@ -67,7 +68,6 @@ public abstract class Bill implements CustomDate{
             Statistics.setTotalNrOfCdBought(Statistics.getTotalNrOfCdBought() + nrOfCDbought);
             Statistics.setTotalNrOfBillBought(Statistics.getTotalNrOfBillBought() + 1);
             String tmp = String.format("%.2f",priceOfTransaction);
-
             Statistics.setCost(Statistics.getCost() + Double.parseDouble(tmp));
         }
 
@@ -81,10 +81,11 @@ public abstract class Bill implements CustomDate{
 
         EmployeeController.saveModifyChanges(u);
 
+        /*
         System.out.println(u.getCdBought());
         System.out.println(u.getBillBought());
         System.out.println(u.getBillSold());
-        System.out.println(u.getCdSold());
+        System.out.println(u.getCdSold());*/
 
         return text + cdManager.showCD() + "\n" + price;
     }

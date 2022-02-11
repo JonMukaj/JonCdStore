@@ -1,13 +1,10 @@
 package com.example.joncdstore.controller;
 
-import com.example.joncdstore.model.CD;
-import com.example.joncdstore.model.CdManager;
 import com.example.joncdstore.model.User;
 import com.example.joncdstore.model.UserManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
-
 import java.util.ArrayList;
 
 

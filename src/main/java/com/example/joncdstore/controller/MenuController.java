@@ -93,11 +93,11 @@ public class MenuController {
     }
 
     public static void createPerformanceNode(AnchorPane mainMenu) {
-        mainMenu.getChildren().add(new Performance().getAnchorPane());
+        mainMenu.getChildren().add(new PerformanceView().getAnchorPane());
     }
 
-    public static void createStatisticsNode(AnchorPane mainMenu,User u) {
-        mainMenu.getChildren().add(new StatisticsView(u).getScrollPane());
+    public static void createStatisticsNode(AnchorPane mainMenu,User u,Stage stage) {
+        mainMenu.getChildren().add(new StatisticsView(u,stage).getScrollPane());
     }
 
     public static void createFinancesNode(Stage stage) {

@@ -10,7 +10,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.File;
 
 public class LoginController {
@@ -37,7 +36,7 @@ public class LoginController {
                 if (user.getPrivilege() == 2) {
                     CdManager cdManager = new CdManager("Purchase");
                     cdManager.readCD();
-                    cdManager.checkQuantity(user,stage,new MainMenuManager(user,stage).getMainMenu());
+                    cdManager.checkQuantity(stage);
 
                 }
 

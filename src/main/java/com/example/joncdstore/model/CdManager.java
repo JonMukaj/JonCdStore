@@ -1,7 +1,6 @@
 package com.example.joncdstore.model;
 
 import com.example.joncdstore.controller.MenuController;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -12,8 +11,8 @@ public class CdManager implements Serializable {
 
     private static final long serialVersionUID = 5847752050191274623L;
 
-    private ArrayList<CD> cdList = new ArrayList<>();;
-    private String type;
+    private ArrayList<CD> cdList = new ArrayList<>();
+    private final String type;
 
     public CdManager(String type) {
         this.type = type;
@@ -61,7 +60,7 @@ public class CdManager implements Serializable {
     }
 
 
-    public void checkQuantity(User u,Stage stage, AnchorPane anchorPane) {
+    public void checkQuantity(Stage stage) {
 
         final int minQuantity = 5;
         readCD();
@@ -69,11 +68,7 @@ public class CdManager implements Serializable {
         Set<String> genreSet = createGenreSet(cdList);
         Map<String, Integer> genreMap = createGenreMap(cdList, genreSet);
 
-        Iterator<Map.Entry<String, Integer>> it = genreMap.entrySet().iterator();
-
-        while (it.hasNext()) {
-            Map.Entry<String, Integer> pair = it.next();
-
+        for (Map.Entry<String, Integer> pair : genreMap.entrySet()) {
             if (pair.getValue() < minQuantity) {
                 MenuController.warningForStock(stage, pair.getKey(), pair.getValue());
                 //System.out.println("Warning! Genre \"" + pair.getKey() + "\" will soon be out of stock");
@@ -92,7 +87,7 @@ public class CdManager implements Serializable {
 
     private LinkedHashMap<String, Integer> createGenreMap(ArrayList<CD> cdList, Set<String> genreSet) {
         LinkedHashMap<String, Integer> genreMap = new LinkedHashMap<>();
-        int numberOfCD = 0;
+        int numberOfCD;
 
         for (String i : genreSet) {
             numberOfCD = 0;
@@ -109,11 +104,11 @@ public class CdManager implements Serializable {
     }
 
     public String showCD() {
-        String text = "";
+        StringBuilder text = new StringBuilder();
         for(CD i : cdList) {
-            text += i.toString(type);
+            text.append(i.toString(type));
         }
-        return text;
+        return text.toString();
     }
 
     public int checkCD(String cdTitle) {
@@ -130,11 +125,7 @@ public class CdManager implements Serializable {
     }
 
     public boolean searchCD(int idx) {
-        if (cdList.get(idx).getTotalQuantity() > 0) {
-            //System.out.println("CD in stock!");
-            return true;
-        }
-        return false;
+        return cdList.get(idx).getTotalQuantity() > 0;
     }
 
 

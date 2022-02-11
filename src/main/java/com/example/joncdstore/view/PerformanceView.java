@@ -2,9 +2,6 @@ package com.example.joncdstore.view;
 
 import com.example.joncdstore.controller.PerformanceController;
 import com.example.joncdstore.model.User;
-import com.example.joncdstore.model.UserManager;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -13,9 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
-import java.util.ArrayList;
-
-public class Performance {
+public class PerformanceView {
 
     private final AnchorPane anchorPane;
 
@@ -43,7 +38,7 @@ public class Performance {
     private final TableColumn<User,Integer> billBought;
     private final TableColumn<User,Integer> cdBought;
 
-    public Performance() {
+    public PerformanceView() {
 
         anchorPane = new AnchorPane();
         tabPane = new TabPane();

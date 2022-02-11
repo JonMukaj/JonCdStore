@@ -12,6 +12,7 @@ import javafx.scene.control.Separator;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class StatisticsView {
 
@@ -39,8 +40,9 @@ public class StatisticsView {
     private final Button cdBt;
     private final Separator sep1;
     private final Text confirmText;
+    private final Button graphBt;
 
-    public StatisticsView(User u) {
+    public StatisticsView(User u, Stage stage) {
 
         Statistics.popStatistics();
 
@@ -59,6 +61,7 @@ public class StatisticsView {
         label = new Label();
         costText = new Text();
         confirmText = new Text();
+        graphBt = new Button();
 
         sep1 = new Separator();
         sep2 = new Separator();
@@ -193,6 +196,19 @@ public class StatisticsView {
         statisticsBt.setText("Reset Statistics");
         statisticsBt.getStyleClass().add("remove");
 
+        graphBt.setLayoutX(600.0);
+        graphBt.setLayoutY(14.0);
+        graphBt.setPrefHeight(37.0);
+        graphBt.setPrefWidth(95.0);
+        graphBt.getStyleClass().add("edit");
+        graphBt.setText("Show Graph");
+        graphBt.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                StatisticsController.createGraphScene(u,stage);
+            }
+        });
+
         userBt.setLayoutX(150.0);
         userBt.setLayoutY(14.0);
         userBt.setOnAction(new EventHandler<ActionEvent>() {
@@ -258,6 +274,7 @@ public class StatisticsView {
         anchorPane.getChildren().add(statisticsBt);
         anchorPane.getChildren().add(userBt);
         anchorPane.getChildren().add(cdBt);
+        anchorPane.getChildren().add(graphBt);
         anchorPane.getChildren().add(confirmText);
 
         scrollPane.setContent(anchorPane);

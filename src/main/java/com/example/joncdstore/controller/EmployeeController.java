@@ -4,7 +4,6 @@ package com.example.joncdstore.controller;
 import com.example.joncdstore.App;
 import com.example.joncdstore.model.User;
 import com.example.joncdstore.model.UserManager;
-import com.example.joncdstore.view.Account;
 import com.example.joncdstore.view.AddEmployee;
 import com.example.joncdstore.view.Employee;
 import com.example.joncdstore.view.ModifyUser;
@@ -13,7 +12,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -122,7 +120,7 @@ public class EmployeeController {
             stage.setScene(new Employee(u,stage).generateEmployeeScene());
         }
         catch (Exception e) {
-            System.out.println(e.toString());
+            //System.out.println(e.toString());
         }
 
     }

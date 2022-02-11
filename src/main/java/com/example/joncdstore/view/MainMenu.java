@@ -102,7 +102,7 @@ public class MainMenu  {
             @Override
             public void handle(ActionEvent event) {
                 smallMenu.setStyle("-fx-background-color: #FFFFFF;");
-                MenuController.createStatisticsNode(mainMenu,u);
+                MenuController.createStatisticsNode(mainMenu,u,stage);
             }
         });
         statisticsBt.setPrefHeight(74.0);
